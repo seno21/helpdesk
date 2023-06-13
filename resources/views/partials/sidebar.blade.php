@@ -2,7 +2,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
               <li class="nav-item">
-                  <a class="nav-link" href="index.html">
+                  <a class="nav-link" href="{{ asset('/') }}">
                       <i class="icon-grid menu-icon"></i>
                       <span class="menu-title">Beranda</span>
                   </a>
@@ -50,10 +50,10 @@
                   </a>
                   <div class="collapse" id="tables">
                       <ul class="nav flex-column sub-menu">
-                          <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Data
+                          <li class="nav-item"> <a class="nav-link" href="{{ route('master.karyawan.index') }}">Data
                                   Karyawan</a>
                           </li>
-                          <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Data
+                          <li class="nav-item"> <a class="nav-link" href="{{ route('master.dataunit.index') }}">Data
                                   Unit</a>
                           </li>
                       </ul>

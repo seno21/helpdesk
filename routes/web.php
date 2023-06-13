@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MasterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
+});
+
+// Route::get('/master/karyawan', [MasterController::class, 'index']);s
+
+Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
+    // Route::get('/karyawan', [MasterController::class, 'index'])->name('karyawan.index');
+    Route::resource('karyawan', \App\Http\Controllers\MasterController::class);
+    Route::resource('dataunit', \App\Http\Controllers\DataUnitController::class);
 });
