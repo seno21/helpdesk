@@ -10,7 +10,8 @@
               <li class="nav-item">
                   <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="false"
                       aria-controls="ui-basic">
-                      <i class="ti-search menu-icon"></i>
+                      {{-- <i class="ti-search menu-icon"></i> --}}
+                      <i class="fa fa-search"></i>
                       <span class="menu-title">Lacak</span>
                   </a>
               </li>

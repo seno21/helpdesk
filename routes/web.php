@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\MasterController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+//namespace controllernya
+use App\Http\Controllers\KaryawanController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,14 +17,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
-// Route::get('/master/karyawan', [MasterController::class, 'index']);s
+Route::get('/', [DashboardController::class, 'index']);
+
+// Route::get('/master/karyawan', [MasterController::class, 'index']);
 
 Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
     // Route::get('/karyawan', [MasterController::class, 'index'])->name('karyawan.index');
-    Route::resource('karyawan', \App\Http\Controllers\MasterController::class);
+    // add method to resource
+    // Route::get('karyawan/details/', [KaryawanController::class, 'details'])->name('karyawan.details');
+    Route::resource('karyawan', KaryawanController::class);
     Route::resource('dataunit', \App\Http\Controllers\DataUnitController::class);
 });

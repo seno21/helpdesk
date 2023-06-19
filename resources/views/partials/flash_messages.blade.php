@@ -13,12 +13,21 @@
 @endif
 
 
-@if (Session::has('berhasil'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
+@if (Session::has('success'))
+    {{-- <div class="alert alert-success alert-dismissible fade show" role="alert">
         <i class="mdi mdi-check-all me-2"></i>
-        {{ Session::get('berhasil') }}
+        {{ Session::get('success') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    </div> --}}
+    <script>
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: "{{ Session::get('success') }}",
+            showConfirmButton: false,
+            timer: 1000
+        })
+    </script>
 @endif
 
 @if (Session::has('error'))

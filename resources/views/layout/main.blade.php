@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Skydash Admin</title>
+    <title>{{ $title }}</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{ asset('vendors/feather/feather.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/ti-icons/css/themify-icons.css') }}">
@@ -16,8 +16,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('js/select.dataTables.min.css') }}">
     <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('css/vertical-layout-light/style.css') }}">
-
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
+    <link rel="stylesheet" href="{{ asset('fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('sweetalert2/dist/sweetalert2.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+
 </head>
 
 <body>
@@ -58,8 +61,11 @@
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-
     <!-- plugins:js -->
+    @include('sweetalert::alert')
+    <script src="{{ asset('sweetalert2/dist/sweetalert2.min.js') }}"></script>
+    <script src="{{ asset('fontawesome-free/js/all.min.js') }}"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- Plugin js for this page -->
     <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
@@ -74,6 +80,41 @@
     <!-- Custom js for this page-->
     <script src="{{ asset('js/dashboard.js') }}"></script>
     <script src="{{ asset('js/Chart.roundedBarCharts.js') }}"></script>
+
+    <script>
+        $(document).on('click', '#btnDelete', function(e) {
+            e.preventDefault();
+            let form = $(this).parents('form');
+
+            Swal.fire({
+                title: 'Yakin menghapus ini ?',
+                text: "Data tidak bisa di kembalikan",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#1BCFB4',
+                cancelButtonColor: '#FE7C96',
+                confirmButtonText: 'Yes!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit()
+                    // Swal.fire({
+                    //     position: 'top-end',
+                    //     icon: 'success',
+                    //     title: 'Data terhapus!',
+                    //     showConfirmButton: false,
+                    //     timer: 5000
+                    // })
+                } else {
+                    Swal.close()
+                }
+
+            })
+        })
+
+        // $('#barang').select2()
+    </script>
+
+
 </body>
 
 </html>
