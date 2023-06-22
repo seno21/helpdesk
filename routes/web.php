@@ -4,6 +4,9 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 //namespace controllernya
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\UnitController;
+use App\Http\Controllers\StatusController;
+
 
 
 /*
@@ -30,5 +33,6 @@ Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
     // add method to resource
     // Route::get('karyawan/details/', [KaryawanController::class, 'details'])->name('karyawan.details');
     Route::resource('karyawan', KaryawanController::class);
-    Route::resource('dataunit', \App\Http\Controllers\DataUnitController::class);
+    Route::resource('unit', UnitController::class);
+    Route::resource('status', StatusController::class);
 });

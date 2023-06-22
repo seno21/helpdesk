@@ -4,7 +4,7 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Master Data Karyawan</h4>
+                <h3 class="font-weight-bold">Master Data Karyawan</h3>
                 {{-- @include('partials.flash_messages') --}}
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">

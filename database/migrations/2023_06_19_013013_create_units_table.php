@@ -14,10 +14,14 @@ return new class extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->string('divisi')->nullable();
-            $table->string('bagian')->nullable();
-            $table->srting('prioritas');
+            $table->string('kategori')->nullable();
+            $table->integer('id_prioritas');
             $table->timestamps();
         });
+
+        // Schema::table('units', function (Blueprint $table) {
+        //     $table->foreign('id_prioritas')->references('id')->on('prioritas')->cascadeOnUpdate()->cascadeOnDelete();
+        // });
     }
 
     /**

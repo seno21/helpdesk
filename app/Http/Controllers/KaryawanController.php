@@ -63,6 +63,7 @@ class KaryawanController extends Controller
     public function edit($id)
     {
         $karyawan = Karyawan::find($id);
+        // dd($karyawan);
         $data = [
             'title' => "Formulir Edit Data Karyawan",
             'karyawan' => $karyawan

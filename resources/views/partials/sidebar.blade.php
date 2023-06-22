@@ -24,8 +24,36 @@
                   </a>
                   <div class="collapse" id="form-elements">
                       <ul class="nav flex-column sub-menu">
-                          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Basic
-                                  Elements</a></li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="pages/forms/basic_elements.html">New Ticket</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="pages/forms/basic_elements.html">Ticket List</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="pages/forms/basic_elements.html">Order List</a>
+                          </li>
+                      </ul>
+                  </div>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
+                      aria-controls="tables">
+                      <i class="ti-server menu-icon"></i>
+                      <span class="menu-title">Master Data</span>
+                      <i class="menu-arrow"></i>
+                  </a>
+                  <div class="collapse" id="tables">
+                      <ul class="nav flex-column sub-menu">
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ route('master.karyawan.index') }}">Karyawan</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ route('master.unit.index') }}">Unit</a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ route('master.status.index') }}">Status</a>
+                          </li>
                       </ul>
                   </div>
               </li>
@@ -39,24 +67,6 @@
                   <div class="collapse" id="charts">
                       <ul class="nav flex-column sub-menu">
                           <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
-                      </ul>
-                  </div>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false"
-                      aria-controls="tables">
-                      <i class="ti-server menu-icon"></i>
-                      <span class="menu-title">Master Data</span>
-                      <i class="menu-arrow"></i>
-                  </a>
-                  <div class="collapse" id="tables">
-                      <ul class="nav flex-column sub-menu">
-                          <li class="nav-item"> <a class="nav-link" href="{{ route('master.karyawan.index') }}">Data
-                                  Karyawan</a>
-                          </li>
-                          <li class="nav-item"> <a class="nav-link" href="{{ route('master.dataunit.index') }}">Data
-                                  Unit</a>
-                          </li>
                       </ul>
                   </div>
               </li>
