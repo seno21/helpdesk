@@ -10,8 +10,7 @@
               <li class="nav-item">
                   <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="false"
                       aria-controls="ui-basic">
-                      {{-- <i class="ti-search menu-icon"></i> --}}
-                      <i class="fa fa-search"></i>
+                      <i class="ti-search menu-icon"></i>
                       <span class="menu-title">Lacak</span>
                   </a>
               </li>
@@ -25,13 +24,13 @@
                   <div class="collapse" id="form-elements">
                       <ul class="nav flex-column sub-menu">
                           <li class="nav-item">
-                              <a class="nav-link" href="pages/forms/basic_elements.html">New Ticket</a>
+                              <a class="nav-link" href="{{ route('tiket.new.index') }}">New Ticket</a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link" href="pages/forms/basic_elements.html">Ticket List</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="pages/forms/basic_elements.html">Order List</a>
+                              <a class="nav-link" href="pages/forms/basic_elements.html">Open Ticket</a>
                           </li>
                       </ul>
                   </div>

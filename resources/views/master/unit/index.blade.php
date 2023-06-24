@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 @section('content')
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
@@ -14,7 +14,7 @@
                                             class="fa-solid fa-solid fa-plus mr-1"></i>Tambah
                                     </a>
                                 </div>
-                                <table class="table table-striped" id="karyawan">
+                                <table class="table table-striped" id="DataTables">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
@@ -52,7 +52,7 @@
                                                     <div class="d-flex">
                                                         <a href="{{ route('master.unit.edit', $unit->id) }}"
                                                             class="btn btn-sm btn-warning">
-                                                            <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
+                                                            <i class="fa-solid fa-pen-to-square mr-1"></i>
                                                         </a>
                                                         <form class="ml-1"
                                                             action="{{ route('master.unit.destroy', $unit->id) }}"
@@ -62,7 +62,6 @@
                                                             <button type="submit" class="btn btn-sm btn-danger"
                                                                 id="btnDelete">
                                                                 <i class="fa-solid fa-trash"></i>
-                                                                Hapus
                                                             </button>
                                                         </form>
                                                     </div>

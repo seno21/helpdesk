@@ -1,7 +1,7 @@
-import "./bootstrap";
+import './bootstrap';
 
-import swal from "sweetalert2";
+import Alpine from 'alpinejs';
 
-window.Swal = swal;
+window.Alpine = Alpine;
 
-Swal.fire("Hello!", "Ini adalah pesan SweetAlert2.", "success");
+Alpine.start();

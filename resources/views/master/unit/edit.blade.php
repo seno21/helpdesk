@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 @section('content')
     <div class="col-12 grid-margin stretch-card">
         <div class="card">

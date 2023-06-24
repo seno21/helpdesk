@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use Illuminate\Support\Facades\Route;
-//namespace controllernya
 use App\Http\Controllers\KaryawanController;
-use App\Http\Controllers\UnitController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StatusController;
-
-
+use App\Http\Controllers\TiketController;
+use App\Http\Controllers\UnitController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +19,19 @@ use App\Http\Controllers\StatusController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('/', [DashboardController::class, 'index']);
+// Route::get('/', [DashboardController::class, 'index']);
 
-// Route::get('/master/karyawan', [MasterController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
     // Route::get('/karyawan', [MasterController::class, 'index'])->name('karyawan.index');
@@ -36,3 +41,11 @@ Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
     Route::resource('unit', UnitController::class);
     Route::resource('status', StatusController::class);
 });
+
+
+Route::group(['prefix' => 'tiket', 'as' => 'tiket.'], function () {
+    Route::resource('new', TiketController::class);
+});
+
+
+require __DIR__ . '/auth.php';

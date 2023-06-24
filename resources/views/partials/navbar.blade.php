@@ -66,20 +66,23 @@
                       <img src="{{ asset('/images/faces/face28.jpg') }}" alt="profile" />
                   </a>
                   <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                      <a class="dropdown-item">
-                          <i class="ti-settings text-primary"></i>
-                          Settings
+                      <a href="{{ route('profile.edit') }}" class="dropdown-item">
+                          <i class="ti-user text-primary"></i>
+                          Profile
                       </a>
-                      <a class="dropdown-item">
-                          <i class="ti-power-off text-primary"></i>
-                          Logout
-                      </a>
+
+                      <form method="POST" action="{{ route('logout') }}">
+                          @csrf
+
+                          <a href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                          this.closest('form').submit();"
+                              class="dropdown-item">
+                              <i class="ti-power-off text-primary"></i>
+                              Logout
+                          </a>
+                      </form>
                   </div>
-              </li>
-              <li class="nav-item nav-settings d-none d-lg-flex">
-                  <a class="nav-link" href="#">
-                      <i class="icon-ellipsis"></i>
-                  </a>
               </li>
           </ul>
           <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"

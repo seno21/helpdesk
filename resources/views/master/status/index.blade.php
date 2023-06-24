@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 @section('content')
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
@@ -13,7 +13,7 @@
                                         <i class="fa-solid fa-solid fa-plus mr-1"></i>Tambah
                                     </a>
                                 </div>
-                                <table class="table table-striped" id="karyawan">
+                                <table class="table table-striped" id="DataTables">
                                     <thead>
                                         <tr>
                                             <th>Status</th>
@@ -30,7 +30,7 @@
                                                     <div class="d-flex">
                                                         <a href="{{ route('master.status.edit', $status->id) }}"
                                                             class="ml-2 btn btn-sm btn-warning">
-                                                            <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
+                                                            <i class="fa-solid fa-pen-to-square mr-1"></i>
                                                         </a>
                                                         <form class="ml-2"
                                                             action="{{ route('master.status.destroy', $status->id) }}"
@@ -39,7 +39,7 @@
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-sm btn-danger"
                                                                 id="btnDelete">
-                                                                <i class="fa-solid fa-trash mr-1"></i>Hapus
+                                                                <i class="fa-solid fa-trash mr-1"></i>
                                                             </button>
                                                         </form>
                                                     </div>

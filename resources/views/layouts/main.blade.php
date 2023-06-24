@@ -19,8 +19,10 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('sweetalert2/dist/sweetalert2.min.css') }}">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-
+    <link rel="stylesheet" href="{{ asset('DataTables/css/dataTables.dataTables.min.css') }}">
+    {{-- Untuk komponen button datatble CSS --}}
+    <link rel="stylesheet" href="{{ asset('Buttons/css/buttons.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('Buttons/css/buttons.bootstrap4.min.css') }}">
 </head>
 
 <body>
@@ -65,7 +67,6 @@
     @include('sweetalert::alert')
     <script src="{{ asset('sweetalert2/dist/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('fontawesome-free/js/all.min.js') }}"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
     <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- Plugin js for this page -->
     <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
@@ -80,7 +81,19 @@
     <!-- Custom js for this page-->
     <script src="{{ asset('js/dashboard.js') }}"></script>
     <script src="{{ asset('js/Chart.roundedBarCharts.js') }}"></script>
+    <script src="{{ asset('DataTables/js/dataTables.dataTables.min.js') }}"></script>
+    {{-- Untuk komponen button datatble --}}
+    <script src="{{ asset('Buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('Buttons/js/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('JSZip/jszip.min.js') }}"></script>
+    <script src="{{ asset('pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('Buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('Buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('Buttons/js/buttons.colVis.min.js') }}"></script>
 
+
+    {{-- Script untuk Alert hapus dan datatbles --}}
     <script>
         $(document).on('click', '#btnDelete', function(e) {
             e.preventDefault();
@@ -97,13 +110,7 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     form.submit()
-                    // Swal.fire({
-                    //     position: 'top-end',
-                    //     icon: 'success',
-                    //     title: 'Data terhapus!',
-                    //     showConfirmButton: false,
-                    //     timer: 5000
-                    // })
+                    //Disini bisa di masukan swal (sweetalert2)
                 } else {
                     Swal.close()
                 }
@@ -111,9 +118,40 @@
             })
         })
 
-        // $('#barang').select2()
-    </script>
+        // $('#kategori').select2()
 
+
+        $('#DataTables').DataTable({
+            dom: 'Bfrtip',
+            // buttons: ['excel', 'pdf', 'print']
+            buttons: [{
+                    extend: 'excel',
+                    text: '<i class="fa-solid fa-file-excel"></i>',
+                    className: 'btn btn-sm btn-success',
+                    exportOptions: {
+                        // columns: [0, 1, 2] // Kolom yang akan diekspor
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'pdf',
+                    text: '<i class="fa-solid fa-file-pdf"></i>',
+                    className: 'btn btn-danger btn-sm',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="fa-solid fa-print"></i>',
+                    className: 'btn btn-sm btn-secondary',
+                    exportOptions: {
+                        columns: ':visible' // Semua kolom yang terlihat akan diekspor
+                    }
+                }
+            ]
+        });
+    </script>
 
 </body>
 

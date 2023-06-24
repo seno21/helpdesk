@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 
 @section('content')
     <div class="col-12 grid-margin stretch-card">
@@ -15,7 +15,7 @@
                                             class="fa-solid fa-solid fa-plus mr-1"></i>Tambah
                                     </a>
                                 </div>
-                                <table class="table table-striped" id="karyawan">
+                                <table class="table table-striped" id="DataTables">
                                     <thead>
                                         <tr>
                                             <th>Nama Lengkap</th>
@@ -47,12 +47,12 @@
                                                 <td>
                                                     <div class="d-flex">
                                                         <a href="{{ route('master.karyawan.show', $karyawan->id) }}"
-                                                            class="btn btn-sm btn-success">
-                                                            <i class="fa-solid fa-circle-info mr-1"></i>Detail
+                                                            class="btn btn-sm btn-info">
+                                                            <i class="fa-solid fa-circle-info mr-1"></i>
                                                         </a>
                                                         <a href="{{ route('master.karyawan.edit', $karyawan->id) }}"
                                                             class="ml-2 btn btn-sm btn-warning">
-                                                            <i class="fa-solid fa-pen-to-square mr-1"></i>Edit
+                                                            <i class="fa-solid fa-pen-to-square mr-1"></i>
                                                         </a>
                                                         <form class="ml-2"
                                                             action="{{ route('master.karyawan.destroy', $karyawan->id) }}"
@@ -61,7 +61,7 @@
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-sm btn-danger"
                                                                 id="btnDelete">
-                                                                <i class="fa-solid fa-trash mr-1"></i>Hapus
+                                                                <i class="fa-solid fa-trash mr-1"></i>
                                                             </button>
                                                         </form>
                                                     </div>
