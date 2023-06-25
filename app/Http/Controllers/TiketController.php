@@ -18,7 +18,9 @@ class TiketController extends Controller
     public function create()
     {
         $data = [
-            'title' => 'Formulir Membuat Ticket'
+            'title' => 'Formulir Create Ticket'
         ];
+
+        return view('tiket.new.create', $data);
     }
 }

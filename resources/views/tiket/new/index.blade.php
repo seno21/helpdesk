@@ -3,7 +3,7 @@
     <div class="col-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h3 class="font-weight-bold">Master Data Karyawan</h3>
+                <h3 class="font-weight-bold">Daftar Tiket</h3>
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
@@ -16,15 +16,19 @@
                                 <table class="table table-striped" id="DataTables">
                                     <thead>
                                         <tr>
-                                            <th>Nama Lengkap</th>
-                                            <th>NIK</th>
-                                            {{-- <th class="text-center"><i class="fa-solid fa-venus-mars"></i></th> --}}
-                                            <th>No. Telepon</th>
+                                            <th>No. Tiket</th>
+                                            <th>Tanggal</th>
+                                            <th>Judul</th>
+                                            <th>Unit</th>
+                                            <th>Prioritas</th>
+                                            <th>Status</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td>cell</td>
+                                            <td>cell</td>
                                             <td>cell</td>
                                             <td>cell</td>
                                             <td>cell</td>

@@ -24,13 +24,13 @@
                   <div class="collapse" id="form-elements">
                       <ul class="nav flex-column sub-menu">
                           <li class="nav-item">
-                              <a class="nav-link" href="{{ route('tiket.new.index') }}">New Ticket</a>
+                              <a class="nav-link" href="{{ route('tiket.new.index') }}">Tiket</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="pages/forms/basic_elements.html">Ticket List</a>
+                              <a class="nav-link" href="pages/forms/basic_elements.html">Tiket List</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="pages/forms/basic_elements.html">Open Ticket</a>
+                              <a class="nav-link" href="pages/forms/basic_elements.html">Order</a>
                           </li>
                       </ul>
                   </div>

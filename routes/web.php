@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 // Route::get('/', [DashboardController::class, 'index']);
@@ -33,7 +33,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
+
+Route::group(['middleware' => 'isLogin', 'prefix' => 'master', 'as' => 'master.'], function () {
     // Route::get('/karyawan', [MasterController::class, 'index'])->name('karyawan.index');
     // add method to resource
     // Route::get('karyawan/details/', [KaryawanController::class, 'details'])->name('karyawan.details');
@@ -43,7 +44,7 @@ Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
 });
 
 
-Route::group(['prefix' => 'tiket', 'as' => 'tiket.'], function () {
+Route::group(['middleware' => 'isLogin', 'prefix' => 'tiket', 'as' => 'tiket.'], function () {
     Route::resource('new', TiketController::class);
 });
 
