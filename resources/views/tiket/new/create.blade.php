@@ -8,38 +8,60 @@
                     $tgl = date('ymis');
                     // $datetime = date('dmyhi');
                 @endphp
-                <form class="forms-sample" method="POST" action="{{ route('master.unit.store') }}">
+                <form class="forms-sample" method="POST" action="{{ route('tiket.new.store') }}">
                     @csrf
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-2">
                             <div class="form-group">
                                 <label for="no_tiket">No. Tiket</label>
                                 <input type="text" class="form-control" name="no_tiket" id="no_tiket"
-                                    value="{{ 'IT' . $tgl }}" disabled>
+                                    value="{{ 'IT' . $tgl }}" readonly>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        {{-- <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tgl_buat">Tanggal</label>
                                 <input type="datetime-local" class="form-control" name="tgl_buat" id="tgl_buat"
                                     value="">
                             </div>
-                        </div>
-
+                        </div> --}}
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="kategori">Tanggal</label>
+                                <label for="judul">Subjek</label>
+                                <input type="text" class="form-control" name="judul" id="judul"
+                                    value="{{ old('judul') }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="unit">Unit Kerja</label>
                                 <div>
-                                    <select class="form-control" name="kategori" id="kategori">
-                                        <option value="Medis">Medis</option>
-                                        <option value="Penunjang Medis">Penunjang Medis</option>
-                                        <option value="Non Medis">Non Medis</option>
+                                    <select class="form-control" name="unit" id="unit">
+                                        @foreach ($units as $unit)
+                                            <option value="{{ $unit->id }}">{{ $unit->divisi }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="lokasi">Lokasi</label>
+                                <input type="text" class="form-control" name="lokasi" id="lokasi"
+                                    value="{{ old('lokasi') }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="kerusakan">Deskripsi Kerusakan</label>
+                                <textarea class="form-control" name="kerusakan" id="kerusakan" rows="5"></textarea>
+                            </div>
+                        </div>
+                    </div>
 
                     <button type="submit" class="btn btn-primary mr-2">Buat Tiket</button>
                     <a href="{{ route('tiket.new.index') }}" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i>

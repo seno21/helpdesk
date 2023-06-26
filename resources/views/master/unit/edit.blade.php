@@ -38,9 +38,9 @@
                                 <label for="prioritas">Prioritas</label>
                                 <div>
                                     <select class="form-control" name="prioritas" id="prioritas">
-                                        <option value="1" {{ $unit->kode == '1' ? 'selected' : '' }}>Hight</option>
-                                        <option value="2" {{ $unit->kode == '2' ? 'selected' : '' }}>Medium</option>
-                                        <option value="3" {{ $unit->kode == '3' ? 'selected' : '' }}>Low</option>
+                                        <option value="1" {{ $unit->prioID == '1' ? 'selected' : '' }}>Hight</option>
+                                        <option value="2" {{ $unit->prioID == '2' ? 'selected' : '' }}>Medium</option>
+                                        <option value="3" {{ $unit->prioID == '3' ? 'selected' : '' }}>Low</option>
                                     </select>
                                 </div>
                             </div>

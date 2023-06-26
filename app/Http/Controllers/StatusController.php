@@ -30,11 +30,14 @@ class StatusController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'warna' => 'required',
             'status' => 'required',
             'ket' => 'required'
         ]);
 
         $status = new Status();
+
+        $status->warna = $request->warna;
         $status->status = $request->status;
         $status->keterangan = $request->ket;
         $status->save();
@@ -60,6 +63,7 @@ class StatusController extends Controller
         ]);
 
         $status = Status::find($id);
+        $status->warna = $request->warna;
         $status->status = $request->status;
         $status->keterangan = $request->ket;
         $status->save();

@@ -34,11 +34,11 @@
                                                 <td>{{ $unit->divisi }}</td>
                                                 <td>{{ $unit->kategori }}</td>
                                                 <td>
-                                                    @if ($unit->kode == '1')
+                                                    @if ($unit->prioID == '1')
                                                         <label class="badge badge-danger font-weigh-bold">
                                                             {{ $unit->tipe }}
                                                         </label>
-                                                    @elseif ($unit->kode == '2')
+                                                    @elseif ($unit->prioID == '2')
                                                         <label class="badge badge-warning font-weigh-bold">
                                                             {{ $unit->tipe }}
                                                         </label>
@@ -48,6 +48,12 @@
                                                         </label>
                                                     @endif
                                                 </td>
+                                                {{-- <td>
+                                                    <label class="badge font-wight-bold text-light"
+                                                        style="background: {{ $unit->warna }};">
+                                                        {{ $unit->tipe }}
+                                                    </label>
+                                                </td> --}}
                                                 <td>
                                                     <div class="d-flex">
                                                         <a href="{{ route('master.unit.edit', $unit->id) }}"

@@ -17,6 +17,7 @@
                                     <thead>
                                         <tr>
                                             <th>Status</th>
+                                            <th>Warna Label</th>
                                             <th>Keterangan</th>
                                             <th class="text-center">Action</th>
                                         </tr>
@@ -25,6 +26,11 @@
                                         @foreach ($statuses as $status)
                                             <tr>
                                                 <td>{{ $status->status }}</td>
+                                                <td>
+                                                    <label class="badge font-wight-bold text-light"
+                                                        style="color: {{ $status->warna }}; background: {{ $status->warna }}">LABEL
+                                                    </label>
+                                                </td>
                                                 <td>{{ $status->keterangan }}</td>
                                                 <td>
                                                     <div class="d-flex">

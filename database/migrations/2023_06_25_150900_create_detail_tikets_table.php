@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('detail_tikets', function (Blueprint $table) {
             $table->id();
-            // $table->string('no_tiket');
+            $table->bigInteger('id_tiket');
+            $table->string('no_tiket');
             $table->dateTime('tgl_proses')->nullable();
             $table->string('keterangan')->nullable();
             $table->timestamps();

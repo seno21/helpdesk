@@ -14,7 +14,7 @@ class Unit extends Model
     {
         $unit = DB::table('units')
             ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
-            ->select('units.id', 'units.divisi', 'units.kategori', 'prioritas.tipe', 'prioritas.kode')
+            ->select('units.id', 'units.divisi', 'units.kategori', 'prioritas.id AS prioID', 'prioritas.tipe', 'prioritas.warna')
             ->get();
 
         return $unit;
@@ -24,7 +24,7 @@ class Unit extends Model
     {
         $unit = DB::table('units')
             ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
-            ->select('units.id', 'units.divisi', 'units.kategori', 'prioritas.tipe', 'prioritas.kode')
+            ->select('units.id', 'units.divisi', 'units.kategori', 'prioritas.id AS prioID', 'prioritas.tipe', 'prioritas.warna')
             ->where('units.id', $id)
             ->first();
 

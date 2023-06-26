@@ -2,7 +2,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
               <li class="nav-item">
-                  <a class="nav-link" href="{{ asset('/') }}">
+                  <a class="nav-link" href="{{ route('dashboard') }}">
                       <i class="icon-grid menu-icon"></i>
                       <span class="menu-title">Beranda</span>
                   </a>
@@ -25,9 +25,6 @@
                       <ul class="nav flex-column sub-menu">
                           <li class="nav-item">
                               <a class="nav-link" href="{{ route('tiket.new.index') }}">Tiket</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link" href="pages/forms/basic_elements.html">Tiket List</a>
                           </li>
                           <li class="nav-item">
                               <a class="nav-link" href="pages/forms/basic_elements.html">Order</a>
@@ -77,8 +74,10 @@
                   </a>
                   <div class="collapse" id="auth">
                       <ul class="nav flex-column sub-menu">
-                          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                          <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a>
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ route('profile.edit') }}"> Settings </a>
+                          </li>
+                          <li class="nav-item"> <a class="nav-link" href="#"> Register </a>
                           </li>
                       </ul>
                   </div>

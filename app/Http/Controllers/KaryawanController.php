@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KaryawanController extends Controller
 {
@@ -39,6 +40,9 @@ class KaryawanController extends Controller
 
     public function store(Request $request)
     {
+        // dd(Auth::user()->id);
+        // dd(Auth::user()->name);
+
         // Validasi
         $request->validate([
             'nama' => 'required',
@@ -48,6 +52,7 @@ class KaryawanController extends Controller
 
         // Inisiasi
         $karyawan = new Karyawan();
+
 
         $karyawan->nama = $request->nama;
         $karyawan->nik = $request->nik;
@@ -74,6 +79,7 @@ class KaryawanController extends Controller
 
     public function update(Request $request, $id)
     {
+
         // Validasi
         $request->validate([
             'nama' => 'required',

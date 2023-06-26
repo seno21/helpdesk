@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prioritas;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -73,7 +74,6 @@ class UnitController extends Controller
         $unit->kategori = $request->kategori;
         $unit->id_prioritas = $request->prioritas;
         $unit->save();
-
 
         return redirect()->route('master.unit.index')->with('toast_success', 'Berhasil update data');
     }

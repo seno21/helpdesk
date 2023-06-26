@@ -15,18 +15,18 @@ class PrioritasSeeder extends Seeder
     {
         Prioritas::create([
             'tipe' => 'High',
-            'kode' => '1'
+            'warna' => '#FF4747'
         ]);
 
         Prioritas::create([
             'tipe' => 'Medium',
-            'kode' => '2'
+            'warna' => '#FFC100'
         ]);
 
 
         Prioritas::create([
             'tipe' => 'Low',
-            'kode' => '3'
+            'warna' => '#57B657'
         ]);
     }
 }

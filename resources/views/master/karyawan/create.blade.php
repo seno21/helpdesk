@@ -17,13 +17,34 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email" id="email"
+                                    placeholder="mail@example.com" value="{{ old('email') }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" name="password" id="password">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="konfir_password">Konfirmasi Password</label>
+                                <input type="password" class="form-control" name="konfir_password" id="konfir_password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label for="nik">Nomor Induk Karyawan</label>
                                 <input type="text" class="form-control" name="nik" id="nik"
                                     placeholder="000000000" value="{{ old('nik') }}">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="tgl">Tanggal Lahir</label>
@@ -31,6 +52,8 @@
                                     value="{{ old('tgl') }}">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="col-sm-3 col-form-label">Jenis Kelamin</label>
@@ -56,10 +79,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="tlp">No. Telepon</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">+62</span>

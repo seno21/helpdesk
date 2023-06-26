@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('tipe')->nullable();
             $table->integer('aktif')->default(1);
-            $table->string('kode');
+            $table->string('warna');
             $table->timestamps();
         });
     }
