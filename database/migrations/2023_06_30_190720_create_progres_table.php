@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detail_tikets', function (Blueprint $table) {
+        Schema::create('progres', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_tiket');
             $table->string('no_tiket');
             $table->dateTime('tgl_proses')->nullable();
-            $table->string('keterangan')->nullable();
+            $table->string('deskripsi')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detail_tikets');
+        Schema::dropIfExists('progres');
     }
 };

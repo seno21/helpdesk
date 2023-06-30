@@ -45,14 +45,14 @@
                 {{ __('SIGN IN') }}
             </x-primary-button>
 
-            @if (Route::has('password.request'))
+            {{-- @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
-            @endif
+            @endif --}}
         </div>
     </form>
-    <a href="{{ route('register') }}"
-        class="mb-2 mt-2 text-md btn btn-block btn-secondary bg-secondary btn-lg font-weight-bold text-light auth-form-btn">REGISTER</a>
+    {{-- <a href="{{ route('register') }}"
+        class="mb-2 mt-2 text-md btn btn-block btn-secondary bg-secondary btn-lg font-weight-bold text-light auth-form-btn">REGISTER</a> --}}
 </x-guest-layout>

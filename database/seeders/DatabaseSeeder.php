@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             RoleSeeder::class,
             StatusSeeder::class,
-            UnitSeeder::class
+            UnitSeeder::class,
+            KaryawanSeeder::class
         ]);
     }
 }

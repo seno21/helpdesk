@@ -66,7 +66,11 @@
                       <img src="{{ asset('/images/faces/face28.jpg') }}" alt="profile" />
                   </a>
                   <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                      <a href="{{ route('profile.edit') }}" class="dropdown-item">
+                      <div>
+                          {{-- <h4>{{ $auth }}</h4> --}}
+                      </div>
+                      {{-- {{ route('profile.edit') }} --}}
+                      <a href="#" class="dropdown-item">
                           <i class="ti-user text-primary"></i>
                           Profile
                       </a>

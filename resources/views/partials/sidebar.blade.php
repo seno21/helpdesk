@@ -66,18 +66,25 @@
                       </ul>
                   </div>
               </li>
+              {{-- <li class="nav-item">
+                  <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="false"
+                      aria-controls="ui-basic">
+                      <i class="icon-head menu-icon"></i>
+                      <span class="menu-title">User Setting</span>
+                  </a>
+              </li> --}}
               <li class="nav-item">
                   <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                       <i class="icon-head menu-icon"></i>
-                      <span class="menu-title">User Pages</span>
+                      <span class="menu-title">User Settings</span>
                       <i class="menu-arrow"></i>
                   </a>
                   <div class="collapse" id="auth">
                       <ul class="nav flex-column sub-menu">
-                          <li class="nav-item">
-                              <a class="nav-link" href="{{ route('profile.edit') }}"> Settings </a>
+                          <li class="nav-item"> <a class="nav-link" href="#">Update Profile </a>
                           </li>
-                          <li class="nav-item"> <a class="nav-link" href="#"> Register </a>
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ route('profile.edit') }}"> Reset </a>
                           </li>
                       </ul>
                   </div>

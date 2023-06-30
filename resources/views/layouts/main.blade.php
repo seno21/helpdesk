@@ -23,6 +23,11 @@
     {{-- Untuk komponen button datatble CSS --}}
     <link rel="stylesheet" href="{{ asset('Buttons/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('Buttons/css/buttons.bootstrap4.min.css') }}">
+    {{-- Trix Editro --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('summernote/summernote.min.css') }}">
+    {{-- My css for stepper --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+
 </head>
 
 <body>
@@ -91,7 +96,8 @@
     <script src="{{ asset('Buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('Buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('Buttons/js/buttons.colVis.min.js') }}"></script>
-
+    {{-- Summernote --}}
+    <script type="text/javascript" src="{{ asset('summernote/summernote-bs4.min.js') }}"></script>
 
     {{-- Script untuk Alert hapus dan datatbles --}}
     <script>
@@ -150,6 +156,17 @@
                     }
                 }
             ]
+        });
+
+
+        $('#deskripsi').summernote({
+            toolbar: [
+                ['font', ['bold', 'underline', 'clear']],
+                ['para', ['ul', 'paragraph']],
+                ['insert', ['link']],
+                ['view', ['fullscreen']],
+            ],
+            height: 120
         });
     </script>
 

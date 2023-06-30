@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,6 +13,7 @@ class KaryawanController extends Controller
     public function index()
     {
         $data = [
+            'user' => Auth::user()->name,
             'title' => 'Data Karyawan',
             'karyawans' => Karyawan::all()
         ];
@@ -20,9 +23,10 @@ class KaryawanController extends Controller
 
     public function show($id)
     {
+        $karyawan = new Karyawan();
         $data = [
             'title' => 'Detail Info Karyawan',
-            'show' => Karyawan::find($id)
+            'show' => $karyawan->showAll($id),
         ];
 
 
@@ -32,7 +36,8 @@ class KaryawanController extends Controller
     public function create()
     {
         $data = [
-            'title' => "Form Edit Data Karyawan"
+            'title' => "Form Edit Data Karyawan",
+            'roles' => Role::all()
         ];
 
         return view('master.karyawan.create', $data);
@@ -45,14 +50,25 @@ class KaryawanController extends Controller
 
         // Validasi
         $request->validate([
+            'username' => 'required|unique:App\Models\User,name|regex:/^\S*$/',
             'nama' => 'required',
+            'email' => 'required',
+            'password' => 'min:6|required|required_with:konfir_password|same:konfir_password',
+            'konfir_password' => 'min:6',
             'nik'  => 'required|numeric',
-            'tlp' => 'required|numeric'
+            'tlp' => 'numeric'
         ]);
+
+        //Insert ke tabel user
+        $user = new User();
+        $user->name = $request->username;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->id_role = $request->role;
+        $user->save();
 
         // Inisiasi
         $karyawan = new Karyawan();
-
 
         $karyawan->nama = $request->nama;
         $karyawan->nik = $request->nik;
@@ -60,6 +76,7 @@ class KaryawanController extends Controller
         $karyawan->kelamin = $request->kelamin;
         $karyawan->telepon = '+62-' . $request->tlp;
         $karyawan->alamat = $request->alamat;
+        $karyawan->id_user = $user->id; //Mengambil id dari tabel user yg sudah di input
         $karyawan->save();
 
         return redirect()->back()->with('toast_success', 'Data berhasil disimpan');
@@ -68,27 +85,37 @@ class KaryawanController extends Controller
     public function edit($id)
     {
         $karyawan = Karyawan::find($id);
+        $user = User::find($karyawan->id_user);
         // dd($karyawan);
         $data = [
             'title' => "Formulir Edit Data Karyawan",
-            'karyawan' => $karyawan
+            'karyawan' => $karyawan,
+            'user' => $user,
+            'roles' => Role::all()
         ];
 
         return view('master.karyawan.edit', $data);
     }
 
+
     public function update(Request $request, $id)
     {
-
         // Validasi
         $request->validate([
+            'username' => 'required|regex:/^\S*$/',
             'nama' => 'required',
+            'email' => 'required',
             'nik'  => 'required|numeric',
             'tlp' => 'required|numeric'
         ]);
 
-        // Inisiasi
         $karyawan = Karyawan::find($id);
+        $user =  User::find($karyawan->id_user);
+
+        $user->name = $request->username;
+        $user->email = $request->email;
+        $user->id_role = $request->role;
+        $user->save();
 
         $karyawan->nama = $request->nama;
         $karyawan->nik = $request->nik;
@@ -101,9 +128,15 @@ class KaryawanController extends Controller
         return redirect()->route('master.karyawan.index')->with('toast_success', 'Data berhasil update');
     }
 
+    public function reset(Request $request, $id)
+    {
+        return redirect()->route('master.karyawan.index');
+    }
+
     public function destroy($id)
     {
         $karyawan = Karyawan::find($id);
+        // dd($karyawan->id_user);
         $karyawan->delete();
 
         /*
@@ -112,6 +145,8 @@ class KaryawanController extends Controller
             setelah Klik yes pada sweetalert2 maka lanjut eksekusi return di bawah dengan 
             sweetalert realrashid.
         */
+        $user = User::find($karyawan->id_user);
+        $user->delete();
 
         return redirect()->back()->with('toast_success', 'Data terhapus');
     }

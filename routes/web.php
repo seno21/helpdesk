@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
 Route::group(['middleware' => 'isLogin', 'prefix' => 'master', 'as' => 'master.'], function () {
     // Route::get('/karyawan', [MasterController::class, 'index'])->name('karyawan.index');
     // add method to resource
-    // Route::get('karyawan/details/', [KaryawanController::class, 'details'])->name('karyawan.details');
+    Route::patch('karyawan/{$id}', [KaryawanController::class, 'reset'])->name('karyawan.reset');
     Route::resource('karyawan', KaryawanController::class);
     Route::resource('unit', UnitController::class);
     Route::resource('status', StatusController::class);

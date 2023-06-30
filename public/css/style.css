@@ -1,0 +1,17 @@
+.stepper {
+    .line {
+        width: 3px;
+        background-color: lightgrey !important;
+    }
+    .lead {
+        font-size: 1.1rem;
+    }
+
+    .tinggi {
+        height: 80px;
+    }
+
+    .badge-me {
+        border-radius: 2px;
+    }
+}

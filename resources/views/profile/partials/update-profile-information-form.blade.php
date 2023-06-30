@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="nama">Nama Lengkap</label>
+                                <label for="nama">Username</label>
                                 <input id="name" name="name" type="text" class="form-control"
                                     value="{{ old('name', $user->name) }}" required autofocus autocomplete="name">
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />

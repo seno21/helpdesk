@@ -10,21 +10,50 @@ class Tiket extends Model
 {
     use HasFactory;
 
-    public function detailTiket()
+    public function allTiket()
     {
         $tiket = DB::table('tikets')
-            ->select('tikets.id', 'tikets.no_tiket', 'tikets.created_at', 'tikets.judul', 'prioritas.id AS prioritas', 'units.divisi', 'prioritas.tipe', 'statuses.status', 'statuses.warna')
+            ->select('tikets.id', 'tikets.no_tiket', 'tikets.created_at', 'tikets.pemohon', 'tikets.id_karyawan', 'statuses.status', 'tikets.judul', 'units.divisi', 'prioritas.tipe', 'tikets.lokasi', 'tikets.kerusakan', 'statuses.warna')
+            // ->select('*')
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->get();
 
-
-        // SELECT t.id, t.no_tiket, t.created_at, t.judul, u.divisi, p.tipe, s.status
+        // SELECT t.id', t.no_tiket, t.created_at,
+        // t.pemohon, t.id_karyawan as Petugas, s.status,
+        // t.judul as 'Judul', u.divisi as "Unit", p.tipe as 'Prioritas', t.lokasi, t.kerusakan
         // FROM tikets t
         // JOIN units u ON t.id_unit = u.id 
         // JOIN prioritas p ON u.id_prioritas = p.id
         // JOIN statuses s ON t.id_status = s.id ;
         return $tiket;
+    }
+
+    public function showTiket($id)
+    {
+        $detail = DB::table('tikets')
+            ->select(
+                'tikets.id',
+                'tikets.no_tiket',
+                'tikets.created_at AS tanggal',
+                'tikets.pemohon',
+                'tikets.id_karyawan',
+                'statuses.status',
+                'statuses.warna',
+                'tikets.judul',
+                'units.divisi',
+                'prioritas.id AS color',
+                'prioritas.tipe',
+                'tikets.lokasi',
+                'tikets.kerusakan'
+            )
+            ->join('units', 'tikets.id_unit', 'units.id')
+            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('statuses', 'tikets.id_status', 'statuses.id')
+            ->where('tikets.id', $id)
+            ->first();
+
+        return $detail;
     }
 }

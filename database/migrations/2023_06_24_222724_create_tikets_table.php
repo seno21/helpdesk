@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('lokasi');
             $table->text('kerusakan');
             $table->bigInteger('id_karyawan')->nullable();
+            $table->string('pemohon');
             $table->bigInteger('id_status')->default(1);
             // $table->bigInteger('id_chats')->nullable();
             $table->timestamps();
