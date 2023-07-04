@@ -16,7 +16,7 @@
                                 <thead>
                                     <tr>
                                         <th>No. Tiket</th>
-                                        <th>Tanggal Dibuat</th>
+                                        <th>Tanggal Komplain</th>
                                         <th>Judul</th>
                                         <th>Unit</th>
                                         <th>Prioritas</th>
@@ -26,14 +26,33 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($tikets as $tiket)
-                                        <tr>
+                                        <tr class="{{ $tiket->aktif === 1 ? 'bg-secondary' : '' }}">
                                             <td>{{ $tiket->no_tiket }}</td>
-                                            <td>cell</td>
-                                            <td>cell</td>
-                                            <td>cell</td>
-                                            <td>cell</td>
-                                            <td>cell</td>
-                                            <td>cell</td>
+                                            <td>{{ $tiket->created_at }}</td>
+                                            <td>{{ $tiket->judul }}</td>
+                                            <td>{{ $tiket->divisi }}</td>
+                                            <td>
+                                                @if ($tiket->color == '1')
+                                                    <label class="badge badge-danger font-weigh-bold">
+                                                        {{ $tiket->tipe }}
+                                                    </label>
+                                                @elseif ($tiket->color == '2')
+                                                    <label class="badge badge-warning font-weigh-bold">
+                                                        {{ $tiket->tipe }}
+                                                    </label>
+                                                @else
+                                                    <label class="badge badge-success font-weigh-bold">
+                                                        {{ $tiket->tipe }}
+                                                    </label>
+                                                @endif
+                                            </td>
+                                            <td><label class="badge font-weight-bold text-light"
+                                                    style="background: {{ $tiket->warna }};">
+                                                    {{ $tiket->status }}
+                                                </label></td>
+                                            <td>
+
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
