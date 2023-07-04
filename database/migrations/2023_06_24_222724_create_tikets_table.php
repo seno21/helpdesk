@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tikets', function (Blueprint $table) {
             $table->id();
             $table->string('no_tiket');
-            $table->dateTime('tgl_selesai')->nullable();
+            // $table->dateTime('tgl_selesai')->nullable();
             $table->string('judul');
             $table->bigInteger('id_unit');
             $table->string('lokasi');

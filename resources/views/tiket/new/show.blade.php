@@ -12,11 +12,16 @@
                             </h3>
                             <table class="table table-borderless table-responsive">
                                 <tbody>
-                                    {{-- <tr>
-                                        <th>Tanggal dan Jam</th>
+                                    <tr>
+                                        <th>Status</th>
                                         <th>:</th>
-                                        <th>{{ $detail->tanggal }}</th>
-                                    </tr> --}}
+                                        <th>
+                                            <label class="badge font-weight-bold text-light"
+                                                style="background: {{ $detail->warna }};">
+                                                {{ $detail->status }}
+                                            </label>
+                                        </th>
+                                    </tr>
                                     <tr>
                                         <th>Pemohon</th>
                                         <th>:</th>
@@ -25,7 +30,7 @@
                                     <tr>
                                         <th>Petugas</th>
                                         <th>:</th>
-                                        <th>{{ $detail->id_karyawan != null ? $detail->karyawan : '-' }}</th>
+                                        <th>{{ $detail->id_karyawan != null ? $detail->nama : '-' }}</th>
                                     </tr>
                                     <tr>
                                         <th>Prioritas</th>
@@ -76,24 +81,18 @@
                                         <div class="line h-100"></div>
                                     </div>
                                     <div>
-                                        <h4 class="text-dark">
-                                            <label class="badge font-weight-bold text-light"
-                                                style="background: {{ $detail->warna }};">
-                                                {{ $detail->status }}
-                                            </label>
-                                        </h4>
                                         <h4>Pemohon: <b><u><i>{{ $detail->pemohon }}</i></u></b></h4>
                                         <h5>{{ $detail->tanggal }}</h5>
                                         <h5 class="mt-3">Deskripsi.</h5>
-                                        <p class="lead text-muted pb-3">
+                                        <p class="pb-3">
                                             {{ $detail->kerusakan }}
                                         </p>
                                     </div>
                                 </div>
-                                @for ($i = 0; $i < 4; $i++)
+                                @foreach ($progreses as $progres)
                                     <div class="d-flex mb-1">
                                         <div class="d-flex flex-column pr-4 align-items-center">
-                                            @if ($i == 3)
+                                            @if ($detail->aktif === 1)
                                                 <div class="rounded-circle pb-2 pl-3 pr-3 pt-3 bg-danger text-white mb-1">
                                                     <i class="fa-solid fa-circle-check"></i>
                                                 </div>
@@ -107,13 +106,15 @@
 
                                         </div>
                                         <div>
-                                            <h5 class="text-dark">Clone application respository</h5>
-                                            <p class="lead text-muted pb-3">Go to your dashboard and clone Git respository
-                                                from
-                                                the url in the dashboard of your application</p>
+                                            <h4>Petugas: <b><u><i>{{ $detail->nama }}</i></u></b></h4>
+                                            <h5>{{ $progres->tgl_proses }}</h5>
+                                            <h5 class="mt-3">Deskripsi.</h5>
+                                            <p class="lead text-muted pb-3">
+                                                {!! $progres->deskripsi !!}
+                                            </p>
                                         </div>
                                     </div>
-                                @endfor
+                                @endforeach
                             </div>
                         </div>
                     </div>

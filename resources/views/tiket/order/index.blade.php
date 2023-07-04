@@ -46,12 +46,16 @@
                                                     </label>
                                                 @endif
                                             </td>
-                                            <td><label class="badge font-weight-bold text-light"
+                                            <td>
+                                                <label class="badge font-weight-bold text-light"
                                                     style="background: {{ $tiket->warna }};">
                                                     {{ $tiket->status }}
-                                                </label></td>
+                                                </label>
+                                            </td>
                                             <td>
-
+                                                <a href="{{ route('tiket.order.edit', $tiket->id) }}"
+                                                    class="ml-2 btn btn-sm btn-success">
+                                                    <i class="fa-solid fa-comment-dots mr-1"></i>
                                             </td>
                                         </tr>
                                     @endforeach

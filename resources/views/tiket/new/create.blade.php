@@ -17,13 +17,7 @@
                                 value="{{ 'IT' . $tgl }}" readonly>
                         </div>
                     </div>
-                    {{-- <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="tgl_buat">Tanggal</label>
-                                <input type="datetime-local" class="form-control" name="tgl_buat" id="tgl_buat"
-                                    value="">
-                            </div>
-                        </div> --}}
+
                 </div>
                 <div class="row">
                     <div class="col-md-6">

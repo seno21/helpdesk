@@ -27,9 +27,14 @@ class TiketController extends Controller
     public function show($id)
     {
         $detail = new Tiket();
+        $progres = new Progres();
+
+        // dd($detail->no_tiket);
+        // dd($progres->showProgres($detail->no_tiket));
         $data = [
             'title' => 'Detail Permintaan Tiket',
-            'detail' => $detail->showTiket($id)
+            'detail' => $detail->showTiket($id),
+            'progreses' => $progres->showProgres('IT23073015')
         ];
 
         return view('tiket.new.show', $data);
@@ -62,8 +67,8 @@ class TiketController extends Controller
         $tiket->judul = $request->judul;
         $tiket->id_unit = $request->unit;
         $tiket->lokasi = $request->lokasi;
-        $tiket->kerusakan = $request->kerusakan;
         $tiket->pemohon = $pemohon->nama;
+        $tiket->kerusakan = $request->kerusakan;
         $tiket->save();
 
         return redirect()->back()->with('toast_success', 'Berhasil membuat tiket');
@@ -112,9 +117,6 @@ class TiketController extends Controller
         // dd(Tiket::find($id));
         // Detelet di tabel tikets
         $tiket->delete();
-
-
-
 
         return redirect()->back()->with('toast_success', 'Berhasil Hapus Data Permanen');
     }

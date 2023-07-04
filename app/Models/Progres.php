@@ -17,4 +17,12 @@ class Progres extends Model
             ->where('progres.no_tiket', $no_tiket)
             ->delete();
     }
+
+    public function showProgres($no_tiket)
+    {
+        return DB::table('progres')
+            ->select('progres.no_tiket', 'progres.tgl_proses', 'progres.deskripsi')
+            ->where('progres.no_tiket', $no_tiket)
+            ->get();
+    }
 }
