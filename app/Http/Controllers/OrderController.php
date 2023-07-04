@@ -12,7 +12,7 @@ class OrderController extends Controller
         $tiket = new Tiket();
         $data = [
             'title' => 'Order List',
-            'tiket' => $tiket->allOrder()
+            'tikets' => $tiket->allOrder()
         ];
 
         return view('tiket.order.index', $data);

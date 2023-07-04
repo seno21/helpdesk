@@ -25,15 +25,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                        <td>cell</td>
-                                    </tr>
+                                    @foreach ($tikets as $tiket)
+                                        <tr>
+                                            <td>{{ $tiket->no_tiket }}</td>
+                                            <td>cell</td>
+                                            <td>cell</td>
+                                            <td>cell</td>
+                                            <td>cell</td>
+                                            <td>cell</td>
+                                            <td>cell</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
