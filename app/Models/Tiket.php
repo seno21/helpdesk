@@ -56,6 +56,7 @@ class Tiket extends Model
                 'tikets.created_at AS tanggal',
                 'tikets.pemohon',
                 'tikets.id_karyawan',
+                'karyawans.nama',
                 'statuses.status',
                 'statuses.warna',
                 'tikets.judul',
@@ -63,11 +64,13 @@ class Tiket extends Model
                 'prioritas.id AS color',
                 'prioritas.tipe',
                 'tikets.lokasi',
-                'tikets.kerusakan'
+                'tikets.kerusakan',
+                'tikets.aktif'
             )
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
+            ->join('karyawans', 'tikets.id_karyawan', 'karyawans.id')
             ->where('tikets.id', $id)
             ->first();
 
