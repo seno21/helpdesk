@@ -72,7 +72,7 @@
                             </table>
                         </div>
                         <div class="col-md-7 pr-5">
-                            <div class="stepper d-flex flex-column pr-5 ml-2 mr-5">
+                            <div class="stepper d-flex flex-column pr-4 ml-2 mr-5">
                                 <div class="d-flex mb-1">
                                     <div class="d-flex flex-column pr-4 align-items-center">
                                         <div class="rounded-circle pb-2 pl-3 pr-3 pt-3 bg-success text-white mb-1">
@@ -83,7 +83,7 @@
                                     <div>
                                         <h4>Pemohon: <b><u><i>{{ $detail->pemohon }}</i></u></b></h4>
                                         <h5>{{ $detail->tanggal }}</h5>
-                                        <h5 class="mt-3">Deskripsi.</h5>
+                                        <h5 class="mt-4">Deskripsi.</h5>
                                         <p class="pb-3">
                                             {{ $detail->kerusakan }}
                                         </p>
@@ -110,10 +110,8 @@
                                                 <b><u><i>{{ $progres->nama }}</i></u></b>
                                             </h4>
                                             <h5>{{ $progres->tgl_proses }}</h5>
-                                            <h5 class="mt-3">Deskripsi.</h5>
-                                            <p class="lead text-muted pb-3">
-                                                {!! $progres->deskripsi !!}
-                                            </p>
+                                            <h5 class="mt-4">Deskripsi.</h5>
+                                            {!! $progres->deskripsi !!}
                                         </div>
                                     </div>
                                 @endforeach
@@ -121,7 +119,7 @@
                         </div>
                     </div>
                     <div class="mt-2">
-                        <a href="{{ route('tiket.new.index') }}" class="btn btn-light"><i
+                        <a href="{{ route('tiket.order.index') }}" class="btn btn-light"><i
                                 class="fa-solid fa-arrow-left"></i>
                             Back</a>
                     </div>

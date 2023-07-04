@@ -44,16 +44,34 @@ class OrderController extends Controller
 
         $tiket = Tiket::find($id);
 
-        $tiket->id_karyawan = $request->petugas;
+
+        $tiket->id_status = $request->status;
         $tiket->save();
 
         $progres = new Progres();
+        $progres->id_karyawan = $request->petugas;
         $progres->no_tiket = $tiket->no_tiket;
         $progres->tgl_proses = $request->tgl_proses;
         $progres->deskripsi = $request->deskripsi;
-        $progres->id_status = $request->status;
         $progres->save();
 
         return redirect()->back()->with('success', 'Tiket berhasil diproses');
+    }
+
+    public function show($id)
+    {
+        $detail = new Tiket();
+        $progres = new Progres();
+
+        $tiket = $detail->showTiket($id);
+        // dd($progres->petugas($tiket->no_tiket));
+        $data = [
+            'title' => 'Detail Permintaan Tiket',
+            'detail' => $detail->showTiket($id),
+            'progreses' => $progres->showProgres($tiket->no_tiket),
+            'petugas' => $progres->petugas($tiket->no_tiket)
+        ];
+
+        return view('tiket.order.show', $data);
     }
 }

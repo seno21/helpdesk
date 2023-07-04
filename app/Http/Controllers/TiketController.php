@@ -30,12 +30,13 @@ class TiketController extends Controller
         $detail = new Tiket();
         $progres = new Progres();
 
-        // dd($detail->no_tiket);
-        // dd($progres->showProgres($detail->no_tiket));
+        $tiket = $detail->showTiket($id);
+        // dd($progres->petugas($tiket->no_tiket));
         $data = [
             'title' => 'Detail Permintaan Tiket',
             'detail' => $detail->showTiket($id),
-            'progreses' => $progres->showProgres('IT23073015')
+            'progreses' => $progres->showProgres($tiket->no_tiket),
+            'petugas' => $progres->petugas($tiket->no_tiket)
         ];
 
         return view('tiket.new.show', $data);
