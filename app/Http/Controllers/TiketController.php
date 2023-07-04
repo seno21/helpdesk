@@ -26,6 +26,7 @@ class TiketController extends Controller
 
     public function show($id)
     {
+
         $detail = new Tiket();
         $progres = new Progres();
 
