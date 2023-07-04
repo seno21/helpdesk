@@ -100,6 +100,7 @@ class KaryawanController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request->password);
         // Validasi
         $request->validate([
             'username' => 'required|regex:/^\S*$/',
@@ -108,6 +109,14 @@ class KaryawanController extends Controller
             'nik'  => 'required|numeric',
             'tlp' => 'required|numeric'
         ]);
+
+        // cek password untuk validasi
+        if ($request->password != null) {
+            $request->validate([
+                'password' => 'min:6|required|required_with:konfir_password|same:konfir_password',
+                'konfir_password' => 'min:6'
+            ]);
+        }
 
         $karyawan = Karyawan::find($id);
         $user =  User::find($karyawan->id_user);

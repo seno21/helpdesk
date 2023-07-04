@@ -12,11 +12,11 @@
                             </h3>
                             <table class="table table-borderless table-responsive">
                                 <tbody>
-                                    <tr>
+                                    {{-- <tr>
                                         <th>Tanggal dan Jam</th>
                                         <th>:</th>
                                         <th>{{ $detail->tanggal }}</th>
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
                                         <th>Pemohon</th>
                                         <th>:</th>
@@ -90,13 +90,21 @@
                                         </p>
                                     </div>
                                 </div>
-                                @for ($i = 0; $i < 2; $i++)
+                                @for ($i = 0; $i < 4; $i++)
                                     <div class="d-flex mb-1">
                                         <div class="d-flex flex-column pr-4 align-items-center">
-                                            <div class="rounded-circle pb-2 pl-3 pr-3 pt-3 bg-primary text-white mb-1">
-                                                <i class="fa-solid fa-check"></i>
-                                            </div>
-                                            <div class="line h-100"></div>
+                                            @if ($i == 3)
+                                                <div class="rounded-circle pb-2 pl-3 pr-3 pt-3 bg-danger text-white mb-1">
+                                                    <i class="fa-solid fa-circle-check"></i>
+                                                </div>
+                                                <div class="line h-100 d-none"></div>
+                                            @else
+                                                <div class="rounded-circle pb-2 pl-3 pr-3 pt-3 bg-primary text-white mb-1">
+                                                    <i class="fa-solid fa-check"></i>
+                                                </div>
+                                                <div class="line h-100"></div>
+                                            @endif
+
                                         </div>
                                         <div>
                                             <h5 class="text-dark">Clone application respository</h5>
@@ -106,20 +114,6 @@
                                         </div>
                                     </div>
                                 @endfor
-
-                                <div class="d-flex mb-1">
-                                    <div class="d-flex flex-column pr-4 align-items-center">
-                                        <div class="rounded-circle pb-2 pl-3 pr-3 pt-3 bg-danger text-white mb-1">
-                                            <i class="fa-solid fa-circle-check"></i>
-                                        </div>
-                                        <div class="line h-100 d-none"></div>
-                                    </div>
-                                    <div>
-                                        <h5 class="text-dark">Make changes and push!</h5>
-                                        <p class="lead text-muted pb-3">Now make changes to your application source code,
-                                            test it then commit &amp; push</p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

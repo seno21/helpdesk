@@ -41,7 +41,20 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="password">Password *</label>
+                            <input type="password" class="form-control" name="password" id="password">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="konfir_password">Konfirmasi Password *</label>
+                            <input type="password" class="form-control" name="konfir_password" id="konfir_password">
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -118,36 +131,9 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                {{-- <a href="{{ route('master.karyawan.index') }}" class="btn btn-light"><i
-                        class="fa-solid fa-arrow-left"></i> Back</a> --}}
-            </form>
-            {{-- Form Reset Password --}}
-
-            <div class="mt-5 mb-3">
-                <h4>Reset Password User</h4>
-            </div>
-            <form class="forms-sample" method="POST" action="{{ route('master.karyawan.reset', $karyawan->id) }}">
-                @csrf
-                @method('PUT')
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="password">Password *</label>
-                            <input type="password" class="form-control" name="password" id="password">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="konfir_password">Konfirmasi Password *</label>
-                            <input type="password" class="form-control" name="konfir_password" id="konfir_password">
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-danger mr-2">Reset Password</button>
+                <button type="submit" class="btn btn-primary mr-2">Update</button>
                 <a href="{{ route('master.karyawan.index') }}" class="btn btn-light"><i
-                        class="fa-solid fa-arrow-left"></i>
-                    Back</a>
+                        class="fa-solid fa-arrow-left"></i> Back</a>
             </form>
         </div>
     </div>

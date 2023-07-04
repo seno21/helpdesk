@@ -18,6 +18,7 @@ class Tiket extends Model
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
+            ->orderByDesc('tikets.id')
             ->get();
 
         // SELECT t.id', t.no_tiket, t.created_at,

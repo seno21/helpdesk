@@ -22,7 +22,8 @@ return new class extends Migration
             $table->bigInteger('id_karyawan')->nullable();
             $table->string('pemohon');
             $table->bigInteger('id_status')->default(1);
-            // $table->bigInteger('id_chats')->nullable();
+            $table->bigInteger('id_progres')->nullable();
+            $table->integer('aktif')->default('0');
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
+use App\Models\Progres;
 use App\Models\Tiket;
 use App\Models\Unit;
 use Illuminate\Http\Request;
@@ -13,6 +14,8 @@ class TiketController extends Controller
     public function index()
     {
         $tiket = new Tiket();
+        // dd($tiket->allTiket());
+
         $data = [
             'title' => 'Tiket list',
             'tikets' => $tiket->allTiket()
@@ -64,5 +67,55 @@ class TiketController extends Controller
         $tiket->save();
 
         return redirect()->back()->with('toast_success', 'Berhasil membuat tiket');
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'title' => 'Formulir Edit Tiket',
+            'tiket' => Tiket::find($id),
+            'units' => Unit::all()
+        ];
+
+        return view('tiket.new.edit', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $karyawan = new Karyawan();
+        // $tiket = new Tiket();
+
+        $user_id = Auth::user()->id;
+        $pemohon = $karyawan->pemohon($user_id);
+
+        $tiket = Tiket::find($id);
+        $tiket->no_tiket = $request->no_tiket;
+        $tiket->judul = $request->judul;
+        $tiket->id_unit = $request->unit;
+        $tiket->lokasi = $request->lokasi;
+        $tiket->kerusakan = $request->kerusakan;
+        $tiket->pemohon = $pemohon->nama;
+        $tiket->save();
+
+        return redirect()->route('tiket.new.index')->with('toast_success', 'Berhasil Mengupdate Tiket');
+    }
+
+    public function destroy($id)
+    {
+        // Mencari data dulu
+        $tiket = Tiket::find($id);
+
+        // Delete di tabel progress
+        $progres = new Progres;
+        $progres->deleteProgres($tiket->no_tiket);
+
+        // dd(Tiket::find($id));
+        // Detelet di tabel tikets
+        $tiket->delete();
+
+
+
+
+        return redirect()->back()->with('toast_success', 'Berhasil Hapus Data Permanen');
     }
 }

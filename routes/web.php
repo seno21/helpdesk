@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TiketController;
@@ -46,6 +47,7 @@ Route::group(['middleware' => 'isLogin', 'prefix' => 'master', 'as' => 'master.'
 
 Route::group(['middleware' => 'isLogin', 'prefix' => 'tiket', 'as' => 'tiket.'], function () {
     Route::resource('new', TiketController::class);
+    Route::resource('order', OrderController::class);
 });
 
 

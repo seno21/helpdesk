@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary mr-2">Simpan</button>
+                <button type="submit" class="btn btn-primary mr-2">Update</button>
                 <a href="{{ route('master.status.index') }}" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i>
                     Back</a>
             </form>

@@ -128,6 +128,8 @@
 
 
         $('#DataTables').DataTable({
+            order: [], //disable order by, order by nya dari query aja
+            pageLength: 10,
             dom: 'Bfrtip',
             // buttons: ['excel', 'pdf', 'print']
             buttons: [{

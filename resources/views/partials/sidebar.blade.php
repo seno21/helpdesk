@@ -27,7 +27,7 @@
                               <a class="nav-link" href="{{ route('tiket.new.index') }}">Tiket</a>
                           </li>
                           <li class="nav-item">
-                              <a class="nav-link" href="pages/forms/basic_elements.html">Order</a>
+                              <a class="nav-link" href="{{ route('tiket.order.index') }}">Order</a>
                           </li>
                       </ul>
                   </div>
