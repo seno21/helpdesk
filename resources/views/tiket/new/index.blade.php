@@ -26,7 +26,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($tikets as $tiket)
-                                        <tr>
+                                        <tr class="{{ $tiket->selesai === 1 ? 'bg-secondary' : '' }}">
                                             <td>{{ $tiket->no_tiket }}</td>
                                             <td>
                                                 @php
@@ -65,10 +65,12 @@
                                                         class="btn btn-sm btn-info">
                                                         <i class="fa-solid fa-circle-info mr-1"></i>
                                                     </a>
-                                                    <a href="{{ route('tiket.new.edit', $tiket->id) }}"
-                                                        class="ml-2 btn btn-sm btn-warning">
-                                                        <i class="fa-solid fa-pen-to-square mr-1"></i>
-                                                    </a>
+                                                    @if ($tiket->selesai != 1)
+                                                        <a href="{{ route('tiket.new.edit', $tiket->id) }}"
+                                                            class="ml-2 btn btn-sm btn-warning" disabled>
+                                                            <i class="fa-solid fa-pen-to-square mr-1"></i>
+                                                        </a>
+                                                    @endif
                                                     <form class="ml-2"
                                                         action="{{ route('tiket.new.destroy', $tiket->id) }}"
                                                         method="POST">

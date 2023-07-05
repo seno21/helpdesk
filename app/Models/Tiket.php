@@ -24,7 +24,8 @@ class Tiket extends Model
                 'prioritas.tipe',
                 'tikets.lokasi',
                 'tikets.kerusakan',
-                'statuses.warna'
+                'statuses.warna',
+                'tikets.selesai'
             )
             // ->select('*')
             ->join('units', 'tikets.id_unit', 'units.id')
@@ -48,7 +49,7 @@ class Tiket extends Model
         $tiket = DB::table('tikets')
             ->select(
                 'tikets.id',
-                'tikets.aktif',
+                'tikets.selesai',
                 'prioritas.id AS color',
                 'tikets.no_tiket',
                 'tikets.created_at',
@@ -65,8 +66,8 @@ class Tiket extends Model
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
-            // ->where('tikets.aktif', 0)
-            ->orderBy('tikets.aktif')
+            // ->where('tikets.selesai', 0)
+            ->orderBy('tikets.selesai')
             ->get();
 
         return $tiket;
@@ -89,7 +90,7 @@ class Tiket extends Model
                 'prioritas.tipe',
                 'tikets.lokasi',
                 'tikets.kerusakan',
-                'tikets.aktif'
+                'tikets.selesai'
             )
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('prioritas', 'units.id_prioritas', 'prioritas.id')

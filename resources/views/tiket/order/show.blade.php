@@ -81,7 +81,7 @@
                                         <div class="line h-100"></div>
                                     </div>
                                     <div>
-                                        <h4>Pemohon: <b><u><i>{{ $detail->pemohon }}</i></u></b></h4>
+                                        <h4 class="mt-1">Pemohon: <b><u><i>{{ $detail->pemohon }}</i></u></b></h4>
                                         <h5>{{ $detail->tanggal }}</h5>
                                         <h5 class="mt-4">Deskripsi.</h5>
                                         <p class="pb-3">
@@ -92,7 +92,7 @@
                                 @foreach ($progreses as $progres)
                                     <div class="d-flex mb-1">
                                         <div class="d-flex flex-column pr-4 align-items-center">
-                                            @if ($detail->aktif === 1)
+                                            @if ($detail->selesai === 1)
                                                 <div class="rounded-circle pb-2 pl-3 pr-3 pt-3 bg-danger text-white mb-1">
                                                     <i class="fa-solid fa-circle-check"></i>
                                                 </div>
@@ -103,10 +103,10 @@
                                                 </div>
                                                 <div class="line h-100"></div>
                                             @endif
-
                                         </div>
+
                                         <div>
-                                            <h4>Petugas:
+                                            <h4 class="mt-2">Petugas:
                                                 <b><u><i>{{ $progres->nama }}</i></u></b>
                                             </h4>
                                             <h5>{{ $progres->tgl_proses }}</h5>

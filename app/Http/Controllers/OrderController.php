@@ -36,6 +36,7 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'tgl_proses' => 'required',
             'petugas' => 'required',
             'status' => 'required',
             'deskripsi' => 'required'
@@ -73,5 +74,18 @@ class OrderController extends Controller
         ];
 
         return view('tiket.order.show', $data);
+    }
+
+    public function finish($id)
+    {
+
+        $data = [
+            'title' => 'Penanganan Komplain',
+            'tiket' => Tiket::find($id),
+            'statuses' => Status::all(),
+            'karyawans' => Karyawan::all()
+        ];
+
+        return view('tiket.order.finish', $data);
     }
 }

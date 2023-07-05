@@ -96,6 +96,7 @@ class TiketController extends Controller
         $pemohon = $karyawan->pemohon($user_id);
 
         $tiket = Tiket::find($id);
+
         $tiket->no_tiket = $request->no_tiket;
         $tiket->judul = $request->judul;
         $tiket->id_unit = $request->unit;
@@ -112,14 +113,15 @@ class TiketController extends Controller
         // Mencari data dulu
         $tiket = Tiket::find($id);
 
-        // Delete di tabel progress
-        $progres = new Progres;
-        $progres->deleteProgres($tiket->no_tiket);
-
-        // dd(Tiket::find($id));
-        // Detelet di tabel tikets
-        $tiket->delete();
-
-        return redirect()->back()->with('toast_success', 'Berhasil Hapus Data Permanen');
+        if ($tiket->selesai != 1) {
+            // Delete di tabel progress
+            $progres = new Progres;
+            $progres->deleteProgres($tiket->no_tiket);
+            // Detelet di tabel tikets
+            $tiket->delete();
+            return redirect()->back()->with('toast_success', 'Berhasil Hapus Data Permanen');
+        } else {
+            return redirect()->back()->with('toast_error', 'Permintaan Tidak Bisa Dihapus');
+        }
     }
 }

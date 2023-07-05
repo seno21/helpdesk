@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('pemohon');
             $table->bigInteger('id_status')->default(1);
             $table->bigInteger('id_progres')->nullable();
-            $table->integer('aktif')->default('0');
+            $table->integer('selesai')->default('0');
             $table->timestamps();
         });
     }

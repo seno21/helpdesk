@@ -26,7 +26,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($tikets as $tiket)
-                                        <tr class="{{ $tiket->aktif === 1 ? 'bg-secondary' : '' }}">
+                                        <tr class="{{ $tiket->selesai === 1 ? 'bg-secondary' : '' }}">
                                             <td>{{ $tiket->no_tiket }}</td>
                                             <td>{{ $tiket->created_at }}</td>
                                             <td>{{ $tiket->judul }}</td>
@@ -60,6 +60,10 @@
                                                 <a href="{{ route('tiket.order.show', $tiket->id) }}"
                                                     class="ml-2 btn btn-sm btn-info">
                                                     <i class="fa-solid fa-circle-info mr-1"></i>
+                                                </a>
+                                                <a href="{{ route('tiket.order.finish', $tiket->id) }}"
+                                                    class="ml-2 btn btn-sm btn-danger">
+                                                    <i class="fa-solid fa-check mr-1"></i>
                                                 </a>
                                             </td>
                                         </tr>
