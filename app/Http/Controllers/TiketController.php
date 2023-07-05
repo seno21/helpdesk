@@ -121,7 +121,7 @@ class TiketController extends Controller
             $tiket->delete();
             return redirect()->back()->with('toast_success', 'Berhasil Hapus Data Permanen');
         } else {
-            return redirect()->back()->with('toast_error', 'Permintaan Tidak Bisa Dihapus');
+            return redirect()->back()->with('toast_error', 'Permintaan Telah selesai, Data Tidak Bisa Dihapus');
         }
     }
 }

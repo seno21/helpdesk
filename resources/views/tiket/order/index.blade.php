@@ -53,16 +53,16 @@
                                                 </label>
                                             </td>
                                             <td>
-                                                <a href="{{ route('tiket.order.edit', $tiket->id) }}"
-                                                    class="ml-2 btn btn-sm btn-success">
-                                                    <i class="fa-solid fa-reply mr-1"></i>
-                                                </a>
                                                 <a href="{{ route('tiket.order.show', $tiket->id) }}"
                                                     class="ml-2 btn btn-sm btn-info">
                                                     <i class="fa-solid fa-circle-info mr-1"></i>
                                                 </a>
+                                                <a href="{{ route('tiket.order.edit', $tiket->id) }}"
+                                                    class="ml-2 btn btn-sm btn-success">
+                                                    <i class="fa-solid fa-reply mr-1"></i>
+                                                </a>
                                                 <a href="{{ route('tiket.order.finish', $tiket->id) }}"
-                                                    class="ml-2 btn btn-sm btn-danger">
+                                                    class="ml-2 btn btn-sm btn-success">
                                                     <i class="fa-solid fa-check mr-1"></i>
                                                 </a>
                                             </td>

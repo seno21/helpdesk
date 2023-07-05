@@ -2,12 +2,8 @@
 @section('content')
     <div class="card min-vh-100">
         <div class="card-body">
-            <h4 class="card-title">Formulir Penaganan Komplain</h4>
-            @php
-                $tgl = date('ymis');
-                // $datetime = date('dmyhi');
-            @endphp
-            <form class="forms-sample" method="POST" action="{{ route('tiket.order.update', $tiket->id) }}">
+            <h4 class="card-title">Formulir Komplain Selesai</h4>
+            <form class="forms-sample" method="POST" action="{{ route('tiket.order.end', $tiket->id) }}">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -58,8 +54,11 @@
                         </div>
                     </div>
                 </div>
+                {{-- Input selesai dan last --}}
+                <input type="hidden" name="selesai" value="1">
+                <input type="hidden" name="last" value="1">
 
-                <button type="submit" class="btn btn-success mr-2">Proses</button>
+                <button type="submit" class="btn btn-danger mr-2">Tandai Selesai</button>
                 <a href="{{ route('tiket.order.index') }}" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i>
                     Back</a>
             </form>

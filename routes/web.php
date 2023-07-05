@@ -50,8 +50,8 @@ Route::group(['middleware' => 'isLogin', 'prefix' => 'tiket', 'as' => 'tiket.'],
     Route::resource('order', OrderController::class);
 
     // untuk selesai
-    Route::put('order/{$id}', [OrderController::class, 'end'])->name('order.end');
-    Route::get('order/{$id}/finish', [OrderController::class, 'finish'])->name('order.finish');
+    Route::put('orderend/{id}', [OrderController::class, 'end'])->name('order.end');
+    Route::get('order/{id}/finish', [OrderController::class, 'finish'])->name('order.finish');
 });
 
 

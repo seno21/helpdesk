@@ -3,10 +3,6 @@
     <div class="card min-vh-100">
         <div class="card-body">
             <h4 class="card-title">Formulir Pembuatan Tiket Baru</h4>
-            @php
-                $tgl = date('ymis');
-                // $datetime = date('dmyhi');
-            @endphp
             <form class="forms-sample" method="POST" action="{{ route('tiket.new.update', $tiket->id) }}">
                 @csrf
                 @method('PUT')

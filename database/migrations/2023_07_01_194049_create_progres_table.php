@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('no_tiket');
             $table->dateTime('tgl_proses')->nullable();
             $table->string('deskripsi')->nullable();
-            $table->bigInteger('id_status')->nullable();
+            $table->bigInteger('last')->nullable();
             $table->bigInteger('id_karyawan')->nullable();
             $table->timestamps();
         });

@@ -92,7 +92,7 @@
                                 @foreach ($progreses as $progres)
                                     <div class="d-flex mb-1">
                                         <div class="d-flex flex-column pr-4 align-items-center">
-                                            @if ($detail->selesai === 1)
+                                            @if ($progres->last != null)
                                                 <div class="rounded-circle pb-2 pl-3 pr-3 pt-3 bg-danger text-white mb-1">
                                                     <i class="fa-solid fa-circle-check"></i>
                                                 </div>
