@@ -64,7 +64,7 @@ class TiketController extends Controller
         $pemohon = $karyawan->pemohon($id);
         // dd($pemohon->nama);
 
-
+        $tiket->id_user = Auth::user()->id;
         $tiket->no_tiket = $request->no_tiket;
         $tiket->judul = $request->judul;
         $tiket->id_unit = $request->unit;
