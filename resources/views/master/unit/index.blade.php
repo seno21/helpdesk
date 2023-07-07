@@ -13,7 +13,7 @@
                                         class="fa-solid fa-solid fa-plus mr-1"></i>Tambah
                                 </a>
                             </div>
-                            <table class="table table-striped" id="DataTables">
+                            <table class="table table-striped table-hover" id="DataTables">
                                 <thead>
                                     <tr>
                                         <th>No.</th>

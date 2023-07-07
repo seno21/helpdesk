@@ -12,7 +12,7 @@
                                         class="fa-solid fa-solid fa-ticket mr-1"></i>New Ticket
                                 </a>
                             </div>
-                            <table class="table table-striped" id="DataTables">
+                            <table class="table table-striped table-hover" id="DataTables">
                                 <thead>
                                     <tr>
                                         <th>No. Tiket</th>

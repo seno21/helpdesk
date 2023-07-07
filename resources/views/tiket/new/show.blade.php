@@ -10,10 +10,16 @@
                             <h3>Nomor Tiket: <b
                                     class="rounded px-1 badge-dark text-light font-weight-bold text-lg">{{ $detail->no_tiket }}</b>
                             </h3>
-                            <table class="table table-borderless table-responsive">
+                            <h4 class="font-weight-bold mt-4"><u>DETAIL KERUSAKAN</u></h4>
+                            <h5 class="mb-3">{{ $detail->kerusakan }}</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <table class="table table-borderless">
                                 <tbody>
                                     <tr>
-                                        <th>Status</th>
+                                        <th class="bg-secondary">Status</th>
                                         <th>:</th>
                                         <th>
                                             <label class="badge font-weight-bold text-light"
@@ -23,17 +29,17 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th>Pemohon</th>
+                                        <th class="bg-secondary">Pemohon</th>
                                         <th>:</th>
                                         <th>{{ $detail->pemohon }}</th>
                                     </tr>
                                     <tr>
-                                        <th>Petugas</th>
+                                        <th class="bg-secondary">Petugas</th>
                                         <th>:</th>
                                         <th>{{ $petugas != null ? $petugas->nama : '-' }}</th>
                                     </tr>
                                     <tr>
-                                        <th>Prioritas</th>
+                                        <th class="bg-secondary">Prioritas</th>
                                         <th>:</th>
                                         <th>
                                             @if ($detail->color == '1')
@@ -51,79 +57,69 @@
                                             @endif
                                         </th>
                                     </tr>
-                                    <tr>
-                                        <th>Judul</th>
-                                        <th>:</th>
-                                        <th>{{ $detail->judul }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Unit Kerja</th>
-                                        <th>:</th>
-                                        <th>{{ $detail->divisi }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Lokasi Detail</th>
-                                        <th>:</th>
-                                        <th>
-                                            <p>{{ $detail->lokasi }}</p>
-                                        </th>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-md-7 pr-5">
-                            <div class="stepper d-flex flex-column pr-5 ml-2 mr-5">
-                                <div class="d-flex mb-1">
-                                    <div class="d-flex flex-column pr-4 align-items-center">
-                                        <div class="rounded-circle pb-2 pl-3 pr-3 pt-3 bg-success text-white mb-1">
-                                            <i class="fa-solid fa-flag-checkered"></i>
-                                        </div>
-                                        <div class="line h-100"></div>
-                                    </div>
-                                    <div>
-                                        <h4>Pemohon: <b><u><i>{{ $detail->pemohon }}</i></u></b></h4>
-                                        <h5>{{ $detail->tanggal }}</h5>
-                                        <h5 class="mt-3">Deskripsi.</h5>
-                                        <p class="pb-3">
-                                            {{ $detail->kerusakan }}
-                                        </p>
-                                    </div>
-                                </div>
-                                @foreach ($progreses as $progres)
-                                    <div class="d-flex mb-1">
-                                        <div class="d-flex flex-column pr-4 align-items-center">
-                                            @if ($progres->last != null)
-                                                <div class="rounded-circle pb-2 pl-3 pr-3 pt-3 bg-danger text-white mb-1">
-                                                    <i class="fa-solid fa-circle-check"></i>
-                                                </div>
-                                                <div class="line h-100 d-none"></div>
-                                            @else
-                                                <div class="rounded-circle pb-2 pl-3 pr-3 pt-3 bg-primary text-white mb-1">
-                                                    <i class="fa-solid fa-check"></i>
-                                                </div>
-                                                <div class="line h-100"></div>
-                                            @endif
+                        <div class="col-md-6">
+                            <table class="table table-borderless table-responsive">
+                                <tr>
+                                    <th class="bg-secondary">Tanggal Komplain</th>
+                                    <th>:</th>
+                                    <th>
+                                        @php
+                                            $tgl = date_create($detail->tanggal);
+                                            echo date_format($tgl, 'd/m/Y H:i:s A');
+                                        @endphp
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="bg-secondary">Tanggal selesai</th>
+                                    <th>:</th>
+                                    <th>
+                                        @if ($petugas != null)
+                                            @php
+                                                $tgl = date_create($petugas->tgl_proses);
+                                                echo date_format($tgl, 'd/m/Y H:i:s A');
+                                            @endphp
+                                        @else
+                                            -
+                                        @endif
 
-                                        </div>
-                                        <div>
-                                            <h4>Petugas:
-                                                <b><u><i>{{ $progres->nama }}</i></u></b>
-                                            </h4>
-                                            <h5>{{ $progres->tgl_proses }}</h5>
-                                            <h5 class="mt-3">Deskripsi.</h5>
-                                            <p class="lead text-muted pb-3">
-                                                {!! $progres->deskripsi !!}
-                                            </p>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="bg-secondary">Judul</th>
+                                    <th>:</th>
+                                    <th>{{ $detail->judul }}</th>
+                                </tr>
+                                <tr>
+                                    <th class="bg-secondary">Unit Kerja</th>
+                                    <th>:</th>
+                                    <th>{{ $detail->divisi }}</th>
+                                </tr>
+                                <tr>
+                                    <th class="bg-secondary">Lokasi Detail</th>
+                                    <th>:</th>
+                                    <th>
+                                        <p>{{ $detail->lokasi }}</p>
+                                    </th>
+                                </tr>
+                                {{-- <tr>
+                                    <th class="bg-secondary">Keterangan Kerusakan</th>
+                                    <th>:</th>
+                                    <th>
+                                        <p>{{ $detail->kerusakan }}</p>
+                                    </th>
+                                </tr> --}}
+                            </table>
                         </div>
                     </div>
-                    <div class="mt-2">
-                        <a href="{{ route('tiket.new.index') }}" class="btn btn-light"><i
-                                class="fa-solid fa-arrow-left"></i>
-                            Back</a>
+                    <div class="row">
+                        <div class="mt-2">
+                            <a href="{{ route('tiket.new.index') }}" class="btn btn-light"><i
+                                    class="fa-solid fa-arrow-left"></i>
+                                Back</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -82,7 +82,12 @@
                                     </div>
                                     <div>
                                         <h4 class="mt-1">Pemohon: <b><u><i>{{ $detail->pemohon }}</i></u></b></h4>
-                                        <h5>{{ $detail->tanggal }}</h5>
+                                        <h5>
+                                            @php
+                                                $tgl = date_create($detail->tanggal);
+                                                echo date_format($tgl, 'd/m/Y H:i:s A');
+                                            @endphp
+                                        </h5>
                                         <h5 class="mt-4">Deskripsi.</h5>
                                         <p class="pb-3">
                                             {{ $detail->kerusakan }}
@@ -109,7 +114,12 @@
                                             <h4 class="mt-2">Petugas:
                                                 <b><u><i>{{ $progres->nama }}</i></u></b>
                                             </h4>
-                                            <h5>{{ $progres->tgl_proses }}</h5>
+                                            <h5>
+                                                @php
+                                                    $tgl_proses = date_create($progres->tgl_proses);
+                                                    echo date_format($tgl_proses, 'd/m/y H:i:s A');
+                                                @endphp
+                                            </h5>
                                             <h5 class="mt-4">Deskripsi.</h5>
                                             {!! $progres->deskripsi !!}
                                         </div>

@@ -12,7 +12,7 @@
                                         class="fa-solid fa-solid fa-ticket mr-1"></i>New Ticket
                                 </a> --}}
                             </div>
-                            <table class="table table-striped" id="DataTables">
+                            <table class="table table-striped table-hover" id="DataTables">
                                 <thead>
                                     <tr>
                                         <th>No. Tiket</th>
@@ -28,7 +28,12 @@
                                     @foreach ($tikets as $tiket)
                                         <tr class="{{ $tiket->selesai === 1 ? 'bg-secondary' : '' }}">
                                             <td>{{ $tiket->no_tiket }}</td>
-                                            <td>{{ $tiket->created_at }}</td>
+                                            <td>
+                                                @php
+                                                    $tgl = date_create($tiket->created_at);
+                                                    echo date_format($tgl, 'd/m/Y');
+                                                @endphp
+                                            </td>
                                             <td>{{ $tiket->judul }}</td>
                                             <td>{{ $tiket->divisi }}</td>
                                             <td>
