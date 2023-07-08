@@ -157,7 +157,8 @@ class Tiket extends Model
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
-            ->where('tikets.no_tiket', 'like', "%" . $no_tiket . "%")
+            // ->where('tikets.no_tiket', 'like', "%" . $no_tiket . "%")
+            ->where('tikets.no_tiket', $no_tiket)
             ->first();
 
         return $detail;

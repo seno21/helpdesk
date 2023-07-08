@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 
 class LacakController extends Controller
 {
-    public function index()
-    {
-        $data = [
-            'title' => 'Lacak Tiket'
-        ];
+    // public function index()
+    // {
+    //     $data = [
+    //         'title' => 'Lacak Tiket'
+    //     ];
 
-        return view('lacak.index', $data);
-    }
+    //     return view('lacak.index', $data);
+    // }
 
     public function search(Request $request)
     {
@@ -24,10 +24,11 @@ class LacakController extends Controller
 
         $keyword = $request->cari;
         $hasil = $tiket->searchTiket($keyword);
-        // cek jika tidak ada nomor tiket
-        if ($hasil === null) {
-            return redirect()->back()->with('error', 'Nomor Tiket Tidak Ditemukan!');
-        }
+        // dd($hasil);
+        // // Cek jika tiket tidak ada
+        // if ($request->cari != $hasil->no_tiket) {
+        //     return redirect()->back()->with('error', 'Data Tidak Ditemukan');
+        // }
 
         $data = [
             'title' => 'Lacak Tiket',
@@ -35,6 +36,6 @@ class LacakController extends Controller
             'progreses' => $progres->showProgres($keyword)
         ];
 
-        return view('lacak.hasil', $data);
+        return view('lacak.index', $data);
     }
 }

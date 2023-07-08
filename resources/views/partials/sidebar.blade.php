@@ -9,7 +9,7 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="{{ route('lacak.index') }}" aria-controls="ui-basic">
+                      <a class="nav-link" href="{{ route('search') }}" aria-controls="ui-basic">
                           <i class="ti-search menu-icon"></i>
                           <span class="menu-title">Lacak</span>
                       </a>
