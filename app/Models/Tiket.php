@@ -134,4 +134,32 @@ class Tiket extends Model
 
         return $detail;
     }
+
+
+    public function searchTiket($no_tiket)
+    {
+        $detail = DB::table('tikets')
+            ->select(
+                'tikets.id',
+                'tikets.no_tiket',
+                'tikets.created_at AS tanggal',
+                'tikets.pemohon',
+                'statuses.status',
+                'statuses.warna',
+                'tikets.judul',
+                'units.divisi',
+                'prioritas.id AS color',
+                'prioritas.tipe',
+                'tikets.lokasi',
+                'tikets.kerusakan',
+                'tikets.selesai'
+            )
+            ->join('units', 'tikets.id_unit', 'units.id')
+            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('statuses', 'tikets.id_status', 'statuses.id')
+            ->where('tikets.no_tiket', 'like', "%" . $no_tiket . "%")
+            ->first();
+
+        return $detail;
+    }
 }

@@ -6,11 +6,20 @@
             <form class="forms-sample" method="POST" action="{{ route('tiket.order.end', $tiket->id) }}">
                 @csrf
                 @method('PUT')
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="tgl_proses">Tanggal</label>
                             <input type="datetime-local" class="form-control" name="tgl_proses" id="tgl_proses">
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="tgl_proses">Tanggal</label>
+                            <input type="text" class="form-control" name="tgl_proses" id="tgl_proses"
+                                value="{{ date('Y-m-d H:i:s') }}" readonly>
                         </div>
                     </div>
                 </div>
