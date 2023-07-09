@@ -6,6 +6,8 @@ use App\Models\Karyawan;
 use App\Models\Tiket;
 use Illuminate\Http\Request;
 
+
+
 class DashboardController extends Controller
 {
 
@@ -22,7 +24,11 @@ class DashboardController extends Controller
             'selesai' => $tiket->countFinishTiket(),
             'open' => $tiket->countOpenTiket(),
             'user' => $karyawan->countKaryawan()
-        ];
+        ];;
+
+
+        // $pdf = Pdf::loadView('pdf.invoice', $data);
+        // return $pdf->download('invoice.pdf');
 
         return view('dashboard', $data);
     }

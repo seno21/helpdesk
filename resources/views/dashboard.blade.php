@@ -70,7 +70,7 @@
                             <div class="card card-light-danger">
                                 <div class="card-body">
                                     <p class="mb-4">Total Jumlah User</p>
-                                    <p class="fs-30 mb-2">{{ $user }} Karyawan</p>
+                                    <p class="fs-30 mb-2">{{ $user }}m Karyawan</p>
                                     <p>Jumlah pengguna aktif selain Petugas IT</p>
                                 </div>
                             </div>
