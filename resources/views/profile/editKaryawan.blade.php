@@ -3,7 +3,7 @@
 @section('content')
     <div class="card min-vh-100">
         <div class="card-body">
-            <h3 class="card-title">{{ strtoupper('Formulir Tambah Data Karyawan') }}</h3>
+            <h3 class="card-title">{{ strtoupper('Update Profil Karyawan') }}</h3>
             <p>
                 <b>Nb.</b> Inputan yang bertanda (*) wajib diisi!
             </p>
