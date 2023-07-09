@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Karyawan;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,5 +63,42 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function editKaryawan()
+    {
+        $karyawan = new Karyawan();
+
+        $data = [
+            'title' => 'Update Profile Karyawan',
+            'karyawan' => $karyawan->profileKaryawan(Auth::user()->id)
+        ];
+
+        return view('profile.editKaryawan', $data);
+    }
+
+    public function updateKaryawan(Request $request, $id)
+    {
+        // dd($request->password);
+        // Validasi
+        $request->validate([
+            'nama' => 'required',
+            'nik'  => 'required|numeric',
+            'tlp' => 'required|numeric'
+        ]);
+
+
+        $karyawan = Karyawan::find($id);
+
+
+        $karyawan->nama = $request->nama;
+        $karyawan->nik = $request->nik;
+        $karyawan->tgl_lahir = $request->tgl;
+        $karyawan->kelamin = $request->kelamin;
+        $karyawan->telepon = '+62-' . $request->tlp;
+        $karyawan->alamat = $request->alamat;
+        $karyawan->save();
+
+        return redirect()->route('dashboard')->with('success', 'Profile Berhasil Diupdate');
     }
 }

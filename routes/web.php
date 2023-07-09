@@ -9,6 +9,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TiketController;
 use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\HttpKernel\Profiler\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Router editprofile
+    Route::get('user/edit', [ProfileController::class, 'editKaryawan'])->name('user.editKaryawan');
+    Route::post('user/{id}', [ProfileController::class, 'updateKaryawan'])->name('user.updateKaryawan');
 });
 
 

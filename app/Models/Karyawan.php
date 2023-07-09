@@ -22,9 +22,27 @@ class Karyawan extends Model
     public function pemohon($id)
     {
         return DB::table('karyawans')
-            ->select('karyawans.nama')
+            ->select('karyawans.nama',)
             ->join('users', 'karyawans.id_user', 'users.id')
             ->where('karyawans.id', $id)
+            ->first();
+    }
+
+    public function profileKaryawan($id)
+    {
+        return DB::table('karyawans')
+            ->select(
+                'karyawans.id',
+                'karyawans.nama',
+                'karyawans.nik',
+                'karyawans.tgl_lahir',
+                'karyawans.kelamin',
+                'karyawans.telepon',
+                'karyawans.alamat',
+                'karyawans.id_user'
+            )
+            ->join('users', 'karyawans.id_user', 'users.id')
+            ->where('users.id', $id)
             ->first();
     }
 
