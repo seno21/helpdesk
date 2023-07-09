@@ -163,4 +163,31 @@ class Tiket extends Model
 
         return $detail;
     }
+
+    public function countTiket()
+    {
+        $hitung = DB::table('tikets')
+            // ->where('selesai', 0)
+            ->count();
+
+        return $hitung;
+    }
+
+    public function countFinishTiket()
+    {
+        $hitung = DB::table('tikets')
+            ->where('selesai', 1)
+            ->count();
+
+        return $hitung;
+    }
+
+    public function countOpenTiket()
+    {
+        $hitung = DB::table('tikets')
+            ->where('id_status', 1)
+            ->count();
+
+        return $hitung;
+    }
 }

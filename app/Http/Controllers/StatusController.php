@@ -74,7 +74,7 @@ class StatusController extends Controller
     public function destroy($id)
     {
         $status = Status::find($id);
-        if ($status->id === 1) {
+        if ($status->id === 1 || $status->id === 2) {
             return redirect()->back()->with('error', 'Status default! Tidak bisa di hapus');
         }
 

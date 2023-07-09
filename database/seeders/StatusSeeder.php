@@ -18,5 +18,11 @@ class StatusSeeder extends Seeder
             'keterangan' => 'Status default Helpdesk Ticketing',
             'warna' => '#46c35f'
         ]);
+
+        Status::create([
+            'status' => 'Selesai',
+            'keterangan' => 'Status default Helpdesk Ticketing',
+            'warna' => '#FF4747'
+        ]);
     }
 }

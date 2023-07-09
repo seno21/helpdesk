@@ -6,6 +6,7 @@
             <form class="forms-sample" method="POST" action="{{ route('tiket.new.update', $tiket->id) }}">
                 @csrf
                 @method('PUT')
+                <input type="hidden" name="tgl_buat" value="{{ date('Y-m-d') }}">
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">

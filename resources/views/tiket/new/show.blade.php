@@ -10,8 +10,11 @@
                             <h3>Nomor Tiket: <b
                                     class="rounded px-1 badge-dark text-light font-weight-bold text-lg">{{ $detail->no_tiket }}</b>
                             </h3>
-                            <h4 class="font-weight-bold mt-4"><u>DETAIL KERUSAKAN</u></h4>
-                            <h5 class="mb-3">{{ $detail->kerusakan }}</h5>
+                            <h4 class="font-weight-bold mt-4 badge badge-danger">DETAIL KERUSAKAN</h4>
+                            <div class="blockquote blockquote-reverse rounded">
+                                <p>{{ $detail->kerusakan }}</p>
+                                <footer class="blockquote-footer">{{ $detail->pemohon }}</footer>
+                            </div>
                         </div>
                     </div>
                     <div class="row mt-4">

@@ -27,4 +27,12 @@ class Karyawan extends Model
             ->where('karyawans.id', $id)
             ->first();
     }
+
+    public function countKaryawan()
+    {
+        return DB::table('karyawans')
+            ->join('users', 'karyawans.id_user', 'users.id')
+            ->where('id_role', '!=', '1')
+            ->count();
+    }
 }
