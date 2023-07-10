@@ -23,7 +23,7 @@
                                     <h2 class="mb-0 font-weight-normal"></h2>
                                 </div>
                                 <div class="ml-2">
-                                    <h4 class="location font-weight-bold">Hostname Anda: {{ strtoupper(gethostname()) }}
+                                    <h4 class="location font-weight-bold">Hostname: {{ strtoupper(gethostname()) }}
                                     </h4>
                                     <h6 class="font-weight-strong mt-1 badge badge-danger">
                                         IP Address : {{ gethostbyname(gethostname()) }}

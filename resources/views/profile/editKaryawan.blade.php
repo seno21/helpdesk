@@ -12,7 +12,6 @@
             </div>
             <form class="forms-sample" method="POST" action="{{ route('user.updateKaryawan', $karyawan->id) }}">
                 @csrf
-
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
