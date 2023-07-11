@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
 use App\Models\Tiket;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
-
-
 
 class DashboardController extends Controller
 {
@@ -27,8 +26,8 @@ class DashboardController extends Controller
         ];;
 
 
-        // $pdf = Pdf::loadView('pdf.invoice', $data);
-        // return $pdf->download('invoice.pdf');
+        // $pdf = PDF::loadView('dashboard', $data);
+        // return $pdf->download('dashboard.pdf');
 
         return view('dashboard', $data);
     }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\LacakController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StatusController;
@@ -63,8 +64,10 @@ Route::group(['middleware' => 'isLogin', 'prefix' => 'tiket', 'as' => 'tiket.'],
 });
 
 
-Route::resource('lacak', LacakController::class)->middleware('isLogin');
+// Route::resource('lacak', LacakController::class)->middleware('isLogin');
 Route::get('search', [LacakController::class, 'search'])->name('search')->middleware('isLogin');
+
+Route::get('laporan', [LaporanController::class, 'laporan'])->name('laporan')->middleware('isLogin');
 
 
 require __DIR__ . '/auth.php';
