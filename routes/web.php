@@ -66,6 +66,7 @@ Route::group(['middleware' => 'isLogin', 'prefix' => 'tiket', 'as' => 'tiket.'],
 
 // Route::resource('lacak', LacakController::class)->middleware('isLogin');
 Route::get('search', [LacakController::class, 'search'])->name('search')->middleware('isLogin');
+Route::get('search/tiket', [LacakController::class, 'tiket'])->name('search.tiket')->middleware('isLogin');
 
 Route::get('laporan', [LaporanController::class, 'laporan'])->name('laporan')->middleware('isLogin');
 

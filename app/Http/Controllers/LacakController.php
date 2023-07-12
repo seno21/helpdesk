@@ -24,11 +24,29 @@ class LacakController extends Controller
 
         $keyword = $request->cari;
         $hasil = $tiket->searchTiket($keyword);
-        // dd($hasil);
-        // // Cek jika tiket tidak ada
-        // if ($request->cari != $hasil->no_tiket) {
-        //     return redirect()->back()->with('error', 'Data Tidak Ditemukan');
-        // }
+
+
+        $data = [
+            'title' => 'Lacak Tiket',
+            'hasil' => $hasil,
+            'progreses' => $progres->showProgres($keyword)
+        ];
+
+        return view('lacak.index', $data);
+    }
+
+    public function tiket(Request $request)
+    {
+        $tiket = new Tiket();
+        $progres = new Progres();
+
+        $keyword = $request->cari;
+        $hasil = $tiket->searchTiket($keyword);
+        // Cek ada tiket atau tidak
+        if ($hasil == null) {
+            return redirect()->back()->with('error', 'Tiket Tidak Ditemukan');
+        }
+
 
         $data = [
             'title' => 'Lacak Tiket',

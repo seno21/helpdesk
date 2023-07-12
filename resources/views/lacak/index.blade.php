@@ -10,7 +10,7 @@
                         <div class="mb-3">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <form action="{{ route('search') }}" method="GET">
+                                    <form action="{{ route('search.tiket') }}" method="GET">
                                         @csrf
                                         <div class="form-group">
                                             <label for="cari">Lacak No Tiket</label>

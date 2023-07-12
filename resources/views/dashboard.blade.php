@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 mb-4 stretch-card transparent">
-                            <div class="card card-dark-blue">
+                            <div class="card card-light-danger">
                                 <div class="card-body">
                                     <p class="mb-4">Total Tiket Selesai</p>
                                     <p class="fs-30 mb-2">{{ $selesai }} Tiket</p>
@@ -58,16 +58,16 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
-                            <div class="card card-light-blue">
+                            <div class="card bg-success text-light">
                                 <div class="card-body">
                                     <p class="mb-4">Permintaan Tiket Masuk</p>
                                     <p class="fs-30 mb-2">{{ $open }} Tiket</p>
-                                    <p>Jumlah tiket bersattus open</p>
+                                    <p>Jumlah tiket bersatus open</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 stretch-card transparent">
-                            <div class="card card-light-danger">
+                            <div class="card card-dark-blue">
                                 <div class="card-body">
                                     <p class="mb-4">Total Jumlah User</p>
                                     <p class="fs-30 mb-2">{{ $user }} Karyawan</p>

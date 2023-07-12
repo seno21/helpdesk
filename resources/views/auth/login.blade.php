@@ -9,7 +9,7 @@
 
         {{-- End halaman Edit saya --}}
         {{-- Logo Custom --}}
-        <div class="brand-logo">
+        <div class="brand-logo mb-3">
             <img src="{{ asset('images/logo.svg') }}" alt="logo">
         </div>
 
