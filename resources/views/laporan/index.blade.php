@@ -3,7 +3,7 @@
     <div class="card min-vh-100">
         <div class="card-body">
             <h4 class="card-title">LAPORAN</h4>
-            <form class="forms-sample" method="GET" action="{{ route('laporan.list') }}">
+            <form class="forms-sample" method="GET" action="{{ route('laporan') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-2">
@@ -20,32 +20,6 @@
                                 value="{{ date('Y-m-d') }}">
                         </div>
                     </div>
-                    {{-- <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="status">Unit Kerja</label>
-                            <div>
-                                <select class="form-control" name="status" id="status">
-                                    <option value=null>Pilih Unit</option>
-                                    @foreach ($units as $unit)
-                                        <option value="{{ $unit->id }}">{{ $unit->divisi }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="unit">Status Tiket</label>
-                            <div>
-                                <select class="form-control" name="unit" id="unit">
-                                    <option value="">Pilih Status</option>
-                                    @foreach ($statuses as $status)
-                                        <option value="{{ $status->id }}">{{ $status->status }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
                 <button type="submit" class="mb-3 btn btn-primary mr-2 btn-toolbar">
                     <i class="fa-solid fa-filter mr-1"></i>Filter

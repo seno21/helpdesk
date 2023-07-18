@@ -28,23 +28,23 @@ class LaporanController extends Controller
         return view('laporan.index', $data);
     }
 
-    public function laporan(Request $request)
-    {
-        $tiket = new Tiket();
+    // public function laporan(Request $request)
+    // {
+    //     $tiket = new Tiket();
 
-        $tgl_awal = $request->tgl_awal;
-        $tgl_akhir = $request->tgl_akhir;
+    //     $tgl_awal = $request->tgl_awal;
+    //     $tgl_akhir = $request->tgl_akhir;
 
 
-        // dd($status);
+    //     // dd($status);
 
-        $data = [
-            'title' => 'Laporan Tiket',
-            'laporans' => $tiket->laporan($tgl_awal, $tgl_akhir),
-            'units' => Unit::all(),
-            'statuses' => Status::all()
-        ];
+    //     $data = [
+    //         'title' => 'Laporan Tiket',
+    //         'laporans' => $tiket->laporan($tgl_awal, $tgl_akhir),
+    //         'units' => Unit::all(),
+    //         'statuses' => Status::all()
+    //     ];
 
-        return view('laporan.index', $data);
-    }
+    //     return view('laporan.index', $data);
+    // }
 }
