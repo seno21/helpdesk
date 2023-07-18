@@ -68,7 +68,8 @@ Route::group(['middleware' => 'isLogin', 'prefix' => 'tiket', 'as' => 'tiket.'],
 Route::get('search', [LacakController::class, 'search'])->name('search')->middleware('isLogin');
 Route::get('search/tiket', [LacakController::class, 'tiket'])->name('search.tiket')->middleware('isLogin');
 
-Route::get('laporan', [LaporanController::class, 'laporan'])->name('laporan')->middleware('isLogin');
+Route::get('laporan', [LaporanController::class, 'index'])->name('laporan')->middleware('isLogin');
+Route::get('laporan/list', [LaporanController::class, 'laporan'])->name('laporan.list')->middleware('isLogin');
 
 
 require __DIR__ . '/auth.php';

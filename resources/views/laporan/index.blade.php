@@ -3,26 +3,29 @@
     <div class="card min-vh-100">
         <div class="card-body">
             <h4 class="card-title">LAPORAN</h4>
-            <form class="forms-sample" method="POST" action="{{ route('laporan') }}">
+            <form class="forms-sample" method="GET" action="{{ route('laporan.list') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="tgl_awal">Tanggal Awal</label>
-                            <input type="date" class="form-control" name="tgl_awal" id="tgl_awal">
+                            <input type="date" class="form-control" name="tgl_awal" id="tgl_awal"
+                                value="{{ date('Y-m-d') }}">
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="tgl_akhir">Tanggal Akhir</label>
-                            <input type="date" class="form-control" name="tgl_akhir" id="tgl_akhir">
+                            <input type="date" class="form-control" name="tgl_akhir" id="tgl_akhir"
+                                value="{{ date('Y-m-d') }}">
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    {{-- <div class="col-md-4">
                         <div class="form-group">
-                            <label for="status">Status</label>
+                            <label for="status">Unit Kerja</label>
                             <div>
                                 <select class="form-control" name="status" id="status">
+                                    <option value=null>Pilih Unit</option>
                                     @foreach ($units as $unit)
                                         <option value="{{ $unit->id }}">{{ $unit->divisi }}</option>
                                     @endforeach
@@ -32,44 +35,52 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="unit">Status</label>
+                            <label for="unit">Status Tiket</label>
                             <div>
                                 <select class="form-control" name="unit" id="unit">
+                                    <option value="">Pilih Status</option>
                                     @foreach ($statuses as $status)
                                         <option value="{{ $status->id }}">{{ $status->status }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <button type="submit" class="mb-3 btn btn-primary mr-2 btn-toolbar">
                     <i class="fa-solid fa-filter mr-1"></i>Filter
                 </button>
             </form>
 
-            <table class="table table-striped table-hover mt-5">
+            <table class="table table-striped table-hover mt-5" id="DataTables">
                 <thead>
                     <tr>
-                        <th>No. Tiket</th>
-                        <th>Tanggal Dibuat</th>
+                        <th>Tanggal</th>
                         <th>Judul</th>
                         <th>Unit</th>
                         <th>Prioritas</th>
                         <th>Status</th>
-                        <th class="text-center">Action</th>
+                        <th>Petugas</th>
+                        <th class="text-center">Pemohon</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                    </tr>
+                    @foreach ($laporans as $laporan)
+                        <tr>
+                            <td>
+                                @php
+                                    $tgl = date_create($laporan->tanggal);
+                                    echo date_format($tgl, 'd/m/Y');
+                                @endphp
+                            </td>
+                            <td>{{ $laporan->judul }}</td>
+                            <td>{{ $laporan->divisi }}</td>
+                            <td>{{ $laporan->tipe }}</td>
+                            <td>{{ $laporan->status }}</td>
+                            <td>{{ $laporan->petugas }}</td>
+                            <td>{{ $laporan->pemohon }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

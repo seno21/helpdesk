@@ -192,12 +192,36 @@ class Tiket extends Model
         return $hitung;
     }
 
-    public function laporan(Request $request)
+
+    public function laporan($tgl_awal, $tgl_akhir)
     {
-        return DB::table('tikets')
-            ->whereBetween('tanggal', [$request->tgl_awal, $request->tgl_akhir])
-            ->where('id_status', $request->status)
-            ->where('id_unit', $request->unit)
-            ->get();
+
+        $query = DB::table('tikets')
+            ->select(
+                'tikets.id',
+                'tikets.no_tiket',
+                'tikets.tanggal',
+                'tikets.pemohon',
+                'statuses.status',
+                'statuses.warna',
+                'tikets.judul',
+                'units.divisi',
+                'prioritas.id AS color',
+                'prioritas.tipe',
+                'tikets.lokasi',
+                'tikets.kerusakan',
+                'tikets.selesai',
+                'karyawans.nama AS petugas',
+            )
+            ->join('units', 'tikets.id_unit', 'units.id')
+            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('statuses', 'tikets.id_status', 'statuses.id')
+            ->join('users', 'tikets.id_user', 'users.id')
+            ->join('karyawans', 'users.id', 'karyawans.id_user')
+            ->whereBetween('tikets.tanggal', [$tgl_awal, $tgl_akhir]);
+
+
+
+        return $query->get();
     }
 }
