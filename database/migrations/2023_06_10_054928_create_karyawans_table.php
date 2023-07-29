@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('telepon')->nullable();
             $table->text('alamat')->nullable();
             $table->bigInteger('id_user');
+            $table->string('image')->nullable();
             // $table->foreign('user_id')
             //     ->references('id')
             //     ->on('users')

@@ -2,27 +2,29 @@
 
 @section('content')
     <div class="content-wrapper">
+        <h2 class="mb-4">SISTEM INFORMASI HELPDESK TICKETING</h2>
+        <hr>
         <div class="row">
             <div class="col-md-12 grid-margin">
                 <div class="row">
                     <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                        <h3 class="font-weight-bold">Selamat Datang, {{ strtoupper(Auth::user()->name) }}</h3>
-                        <h6 class="font-weight-normal mb-0">Semua sistem berjalan dengan normal!</h6>
+                        {{-- <h3 class="font-weight-bold">Selamat Datang, {{ strtoupper(Auth::user()->name) }}</h3> --}}
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6 grid-margin stretch-card">
-                <div class="card tale-bg">
+                {{-- <div class="card tale-bg"> --}}
+                <div class="card">
                     <div class="card-people mt-auto">
-                        <img src="images/dashboard/people.svg" alt="people">
+                        <img src="images/dashboard/helpdesk.jpg" alt="people">
                         <div class="weather-info">
                             <div class="d-flex">
                                 <div>
                                     <h2 class="mb-0 font-weight-normal"></h2>
                                 </div>
-                                <div class="ml-2">
+                                <div>
                                     <h4 class="location font-weight-bold">Hostname: {{ strtoupper(gethostname()) }}
                                     </h4>
                                     <h6 class="font-weight-strong mt-1 badge badge-danger">
