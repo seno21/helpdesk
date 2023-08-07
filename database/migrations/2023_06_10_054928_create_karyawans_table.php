@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('kelamin')->nullable();
             $table->string('telepon')->nullable();
             $table->text('alamat')->nullable();
+            $table->string('lokasi')->nullable();
             $table->bigInteger('id_user');
-            $table->string('image')->nullable();
+            $table->bigInteger('id_unit');
             // $table->foreign('user_id')
             //     ->references('id')
             //     ->on('users')

@@ -10,6 +10,7 @@ class Unit extends Model
 {
     use HasFactory;
 
+    // Sementara fungsi-fungsi ini tidak dipakae karena 1 tabel yaitu tabel unit saja
     public function allUnit()
     {
         $unit = DB::table('units')

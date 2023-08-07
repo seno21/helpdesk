@@ -15,6 +15,7 @@ class Karyawan extends Model
         return DB::table('karyawans')
             ->select('*')
             ->join('users', 'karyawans.id_user', 'users.id')
+            ->join('units', 'karyawans.id_unit', 'units.id')
             ->where('karyawans.id', $id)
             ->first();
     }

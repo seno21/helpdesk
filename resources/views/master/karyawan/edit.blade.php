@@ -74,6 +74,29 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="unit">Unit Kerja *</label>
+                            <div>
+                                <select class="form-control" name="unit" id="unit">
+                                    @foreach ($units as $unit)
+                                        <option value="{{ $unit->id }}"
+                                            {{ $karyawan->id_unit == $unit->id ? 'selected' : '' }}>{{ $unit->divisi }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="lokasi">Lokasi Unit Kerja *</label>
+                            <input type="text" class="form-control" name="lokasi" id="lokasi"
+                                value="{{ $karyawan->lokasi }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label for="tgl">Tanggal Lahir</label>
                             <input type="date" class="form-control" name="tgl" id="tgl"
                                 value="{{ $karyawan->tgl_lahir }}">

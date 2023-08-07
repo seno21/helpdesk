@@ -19,7 +19,7 @@
                                         <th>No.</th>
                                         <th>Unit Kerja</th>
                                         <th>Kategori</th>
-                                        <th>Prioritas</th>
+                                        {{-- <th>Prioritas</th> --}}
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -32,7 +32,8 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $unit->divisi }}</td>
                                             <td>{{ $unit->kategori }}</td>
-                                            <td>
+                                            {{-- Ini bagian prioritas 
+                                                <td>
                                                 @if ($unit->prioID == '1')
                                                     <label class="badge badge-danger font-weigh-bold">
                                                         {{ $unit->tipe }}
@@ -46,13 +47,8 @@
                                                         {{ $unit->tipe }}
                                                     </label>
                                                 @endif
-                                            </td>
-                                            {{-- <td>
-                                                    <label class="badge font-wight-bold text-light"
-                                                        style="background: {{ $unit->warna }};">
-                                                        {{ $unit->tipe }}
-                                                    </label>
-                                                </td> --}}
+                                            </td> --}}
+
                                             <td>
                                                 <div class="d-flex">
                                                     <a href="{{ route('master.unit.edit', $unit->id) }}"

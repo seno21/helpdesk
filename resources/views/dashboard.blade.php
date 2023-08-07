@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="content-wrapper">
-        <h2 class="mb-4">SISTEM INFORMASI HELPDESK TICKETING</h2>
+        <h2 class="mb-4 font-weight-bold">SISTEM INFORMASI HELPDESK TICKETING</h2>
         <hr>
         <div class="row">
             <div class="col-md-12 grid-margin">

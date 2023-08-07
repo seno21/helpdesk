@@ -16,19 +16,20 @@ class UnitSeeder extends Seeder
     {
         $data = [
             [
+                'divisi' => 'IT',
+                'kategori' => 'Non Medis',
+            ],
+            [
                 'divisi' => 'Farmasi',
                 'kategori' => 'Penunjang Medis',
-                'id_prioritas' => 2
             ],
             [
                 'divisi' => 'Poliklinik',
                 'kategori' => 'Medis',
-                'id_prioritas' => 1
             ],
             [
                 'divisi' => 'Rumah Tangga',
                 'kategori' => 'Non Medis',
-                'id_prioritas' => 3
             ]
         ];
 

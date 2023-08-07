@@ -11,11 +11,11 @@ class UnitController extends Controller
 {
     public function index()
     {
-        $unit = new Unit();
+
 
         $data = [
             'title' => 'Master Unit',
-            'units' => $unit->allUnit()
+            'units' => unit::all()
         ];
 
         return view('master.unit.index', $data);
@@ -35,25 +35,20 @@ class UnitController extends Controller
         $request->validate([
             'divisi' => 'required',
             'kategori' => 'required',
-            'prioritas' => 'required'
         ]);
 
         $unit = new Unit();
         $unit->divisi = $request->divisi;
         $unit->kategori = $request->kategori;
-        $unit->id_prioritas = $request->prioritas;
         $unit->save();
 
         return redirect()->back()->with('toast_success', 'Berhasil menambah data');
     }
     public function edit($id)
     {
-        $unit = new Unit();
-        $unit = $unit->findUnit($id);
-
         $data = [
             'title' => 'Formulir Edit Data',
-            'unit' => $unit
+            'unit' => unit::find($id)
         ];
 
         return view('master.unit.edit', $data);
@@ -64,7 +59,6 @@ class UnitController extends Controller
         $request->validate([
             'divisi' => 'required',
             'kategori' => 'required',
-            'prioritas' => 'required'
         ]);
 
         $unit = Unit::find($id);
@@ -72,7 +66,7 @@ class UnitController extends Controller
 
         $unit->divisi = $request->divisi;
         $unit->kategori = $request->kategori;
-        $unit->id_prioritas = $request->prioritas;
+        // $unit->id_prioritas = $request->prioritas;
         $unit->save();
 
         return redirect()->route('master.unit.index')->with('toast_success', 'Berhasil update data');
@@ -81,8 +75,8 @@ class UnitController extends Controller
 
     public function destroy($id)
     {
-        $unit = new Unit();
-        $unit->deleteUnit($id);
+        $unit = Unit::find($id);
+        $unit->delete();
 
         return redirect()->back()->with('toast_success', 'Data unit berhasil dihapus');
     }

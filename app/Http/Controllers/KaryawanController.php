@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
 use App\Models\Role;
+use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,8 @@ class KaryawanController extends Controller
     {
         $data = [
             'title' => "Form Edit Data Karyawan",
-            'roles' => Role::all()
+            'roles' => Role::all(),
+            'units' => Unit::all(),
         ];
 
         return view('master.karyawan.create', $data);
@@ -53,6 +55,8 @@ class KaryawanController extends Controller
             'username' => 'required|unique:App\Models\User,name|regex:/^\S*$/',
             'nama' => 'required',
             'email' => 'required',
+            'unit' => 'required',
+            'lokasi' => 'required',
             'password' => 'min:6|required|required_with:konfir_password|same:konfir_password',
             'konfir_password' => 'min:6',
             'nik'  => 'required|numeric',
@@ -77,6 +81,8 @@ class KaryawanController extends Controller
         $karyawan->telepon = '+62-' . $request->tlp;
         $karyawan->alamat = $request->alamat;
         $karyawan->id_user = $user->id; //Mengambil id dari tabel user yg sudah di input
+        $karyawan->id_unit = $request->unit;
+        $karyawan->lokasi = $request->lokasi;
         $karyawan->save();
 
         return redirect()->back()->with('toast_success', 'Data berhasil disimpan');
@@ -91,7 +97,8 @@ class KaryawanController extends Controller
             'title' => "Formulir Edit Data Karyawan",
             'karyawan' => $karyawan,
             'user' => $user,
-            'roles' => Role::all()
+            'roles' => Role::all(),
+            'units' => Unit::all()
         ];
 
         return view('master.karyawan.edit', $data);

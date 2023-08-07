@@ -61,6 +61,10 @@ Route::group(['middleware' => 'isLogin', 'prefix' => 'tiket', 'as' => 'tiket.'],
     // untuk selesai
     Route::put('orderend/{id}', [OrderController::class, 'end'])->name('order.end');
     Route::get('order/{id}/finish', [OrderController::class, 'finish'])->name('order.finish');
+
+    Route::get('baru', [TiketController::class, 'baru'])->name('baru');
+    Route::get('proses', [TiketController::class, 'proses'])->name('proses');
+    Route::get('selesai', [TiketController::class, 'selesai'])->name('selesai');
 });
 
 

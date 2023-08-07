@@ -24,6 +24,45 @@ class TiketController extends Controller
         return view('tiket.new.index', $data);
     }
 
+    public function baru()
+    {
+        $tiket = new Tiket();
+        // dd($tiket->allTiket());
+
+        $data = [
+            'title' => 'Tiket list',
+            'tikets' => $tiket->tiketBaru()
+        ];
+
+        return view('tiket.new.index', $data);
+    }
+
+    public function proses()
+    {
+        $tiket = new Tiket();
+        // dd($tiket->allTiket());
+
+        $data = [
+            'title' => 'Tiket list',
+            'tikets' => $tiket->tiketProses()
+        ];
+
+        return view('tiket.new.index', $data);
+    }
+
+    public function selesai()
+    {
+        $tiket = new Tiket();
+        // dd($tiket->allTiket());
+
+        $data = [
+            'title' => 'Tiket list',
+            'tikets' => $tiket->tiketSelesai()
+        ];
+
+        return view('tiket.new.index', $data);
+    }
+
     public function show($id)
     {
 

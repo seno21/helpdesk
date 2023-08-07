@@ -14,7 +14,13 @@ class StatusSeeder extends Seeder
     public function run(): void
     {
         Status::create([
-            'status' => 'Open',
+            'status' => 'Baru',
+            'keterangan' => 'Status default Helpdesk Ticketing',
+            'warna' => '#4B49AC'
+        ]);
+
+        Status::create([
+            'status' => 'Proses',
             'keterangan' => 'Status default Helpdesk Ticketing',
             'warna' => '#46c35f'
         ]);

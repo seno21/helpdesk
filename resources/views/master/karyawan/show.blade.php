@@ -3,60 +3,68 @@
 @section('content')
     <div class="card min-vh-100">
         <div class="card-body">
-            <h4 class="card-title">Detail Informasi Karyawan</h4>
+            <h4 class="card-title">PROFILE KARYAWAN</h4>
+            <hr>
             <div class="row">
-                .
-                <div class="col-md-8">
-                    <table class="table table-borderless table-responsive">
-                        <tbody>
-                            <tr>
-                                <th>Username</th>
-                                <th>:</th>
-                                <th>{{ $show->name }}</th>
-                            </tr>
-                            <tr>
-                                <th>Email</th>
-                                <th>:</th>
-                                <th>{{ $show->email }}</th>
-                            </tr>
-                            <tr>
-                                <th>Nama Lengkap</th>
-                                <th>:</th>
-                                <th>{{ $show->nama }}</th>
-                            </tr>
-                            <tr>
-                                <th>Nomor Induk Karyawan</th>
-                                <th>:</th>
-                                <th>{{ $show->nik }}</th>
-                            </tr>
-                            <tr>
-                                <th>Tanggal Lahir</th>
-                                <th>:</th>
-                                <th>{{ $show->tgl_lahir }}</th>
-                            </tr>
-                            <tr>
-                                <th>Jenis Kelamin</th>
-                                <th>:</th>
-                                <th>{{ $show->kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</th>
-                            </tr>
-                            <tr>
-                                <th>No. Telepon</th>
-                                <th>:</th>
-                                <th>
-                                    @php
-                                        $tlp = $show->telepon;
-                                        $tlp = explode('-', $tlp);
-                                        echo '0' . $tlp[1];
-                                    @endphp
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>Alamat Lengkap</th>
-                                <th>:</th>
-                                <th>{{ $show->alamat }}</th>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="col-md-3">
+                    <img src="{{ asset('images/faces/user.png') }}" width="auto" height="50%" alt="Profil">
+                </div>
+                <div class="col-md-4">
+                    <ul class="mt-4 text-xl" style="list-style-type: none;">
+                        <li class="mb-4">
+                            <h6 class="font-weight-bold text-secondary">Nama Lengkap</h6>
+                            <h4 class="text-lg font-weight-strong"> {{ strtoupper($show->nama) }}</h4>
+                        </li>
+                        <li class="mb-4">
+                            <h6 class="font-weight-bold text-secondary">Nomor Induk Karyawan</h6>
+                            <h4 class="text-lg font-weight-strong"> {{ strtoupper($show->nik) }}</h4>
+                        </li>
+                        <li class="mb-4">
+                            <h6 class="font-weight-bold text-secondary">Tanggal Lahir</h6>
+                            <h4 class="text-lg font-weight-strong"> {{ strtoupper($show->tgl_lahir) }}</h4>
+                        </li>
+                        <li class="mb-4">
+                            <h6 class="font-weight-bold text-secondary">Jenis kelamin</h6>
+                            <h4 class="text-lg">
+                                {{ $show->kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}</h4>
+                        </li>
+                        <li class="mb-4">
+                            <h6 class="font-weight-bold text-secondary">Alamat Lengkap</h6>
+                            <h4 class="text-lg font-weight-strong"> {{ $show->alamat }}</h4>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-5">
+                    <ul class="mt-4 text-xl" style="list-style-type: none;">
+                        <li class="mb-4">
+                            <h6 class="font-weight-bold text-secondary">Usename</h6>
+                            <h4 class="text-lg font-weight-strong"> {{ $show->name }}</h4>
+                        </li>
+                        <li class="mb-4">
+                            <h6 class="font-weight-bold text-secondary">Email</h6>
+                            <h4 class="text-lg font-weight-strong"> {{ $show->email }}</h4>
+                        </li>
+                        <li class="mb-4">
+                            <h6 class="font-weight-bold text-secondary">No. Telepeon</h6>
+                            <h4 class="text-lg font-weight-strong">
+                                @php
+                                    $tlp = $show->telepon;
+                                    $tlp = explode('-', $tlp);
+                                    echo '0' . $tlp[1];
+                                @endphp
+                            </h4>
+                        </li>
+                        <li class="mb-4">
+                            <h6 class="font-weight-bold text-secondary">Unit Kerja</h6>
+                            <h4 class="text-lg">
+                                {{ $show->divisi }}</h4>
+                        </li>
+                        <li class="mb-4">
+                            <h6 class="font-weight-bold text-secondary">Detail Lokasi Unit Kerja</h6>
+                            <h4 class="text-lg font-weight-strong"> {{ $show->lokasi }}</h4>
+                        </li>
+                    </ul>
+
                     <div class="text-right" style="font-size: 12px;">
                         Data di update pada tanggal
                         @php

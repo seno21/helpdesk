@@ -1,7 +1,13 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
+    <div class="brand-logo mb-3">
+        <img src="{{ asset('images/logo.svg') }}" alt="logo">
+    </div>
+    <h1 class="text-lg font-weight-bold mb-1" style="font-size: 20px;">
+        SISTEM INFORMASI HELPDESK TICKETING
+    </h1>
+    <hr class="mb-3" style="border: solid 2px #51998C;">
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -9,15 +15,13 @@
 
         {{-- End halaman Edit saya --}}
         {{-- Logo Custom --}}
-        <div class="brand-logo mb-3">
-            <img src="{{ asset('images/logo.svg') }}" alt="logo">
-        </div>
+
 
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
-                autofocus autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
+                required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 

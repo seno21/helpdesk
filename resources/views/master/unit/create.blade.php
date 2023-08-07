@@ -26,7 +26,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                {{-- Ini untuk bagian prioritas --}}
+                {{-- <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="prioritas">Prioritas</label>
@@ -39,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn btn-primary mr-2">Simpan</button>
                 <a href="{{ route('master.unit.index') }}" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i>

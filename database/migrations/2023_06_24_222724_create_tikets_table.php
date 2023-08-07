@@ -23,6 +23,7 @@ return new class extends Migration
             $table->bigInteger('id_status')->default(1);
             $table->bigInteger('id_progres')->nullable();
             $table->bigInteger('id_user');
+            $table->bigInteger('id_prioritas');
             $table->integer('selesai')->default('0');
             $table->timestamps();
         });

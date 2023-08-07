@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Psy\Command\WhereamiCommand;
 
 class Tiket extends Model
 {
@@ -14,7 +15,7 @@ class Tiket extends Model
 
     public function allTiket()
     {
-        $allTiketByUser = DB::table('tikets')
+        $query = DB::table('tikets')
             ->select(
                 'tikets.id',
                 'tikets.id_user',
@@ -34,18 +35,26 @@ class Tiket extends Model
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
-            ->join('users', 'tikets.id_user', 'users.id')
-            ->where('tikets.id_user', Auth::user()->id)
-            ->orderByDesc('tikets.id')
-            ->get();
+            ->join('users', 'tikets.id_user', 'users.id');
 
-        $allTiketAdmin = DB::table('tikets')
+        if (Auth::user()->id != 1) {
+            $query->where('tikets.id_user', Auth::user()->id);
+        }
+
+        return $query->orderByDesc('tikets.id')->get();
+    }
+
+    public function tiketBaru()
+    {
+        $query = DB::table('tikets')
             ->select(
                 'tikets.id',
+                'tikets.id_user',
                 'tikets.no_tiket',
                 'tikets.created_at',
                 'tikets.pemohon',
                 'statuses.status',
+                'statuses.id',
                 'tikets.judul',
                 'units.divisi',
                 'prioritas.tipe',
@@ -59,25 +68,81 @@ class Tiket extends Model
             ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
-            ->orderByDesc('tikets.id')
-            ->get();
-
-
+            ->where('statuses.id', 1);
         if (Auth::user()->id != 1) {
-            return $allTiketByUser;
-        } else {
-            return $allTiketAdmin;
+            $query->where('tikets.id_user', Auth::user()->id);
         }
 
-        // SELECT t.id', t.no_tiket, t.created_at,
-        // t.pemohon, t.id_karyawan as Petugas, s.status,
-        // t.judul as 'Judul', u.divisi as "Unit", p.tipe as 'Prioritas', t.lokasi, t.kerusakan
-        // FROM tikets t
-        // JOIN units u ON t.id_unit = u.id 
-        // JOIN prioritas p ON u.id_prioritas = p.id
-        // JOIN statuses s ON t.id_status = s.id ;
-        // return $tiket;
+        return $query->orderByDesc('tikets.id')->get();
     }
+
+    public function tiketProses()
+    {
+        $query = DB::table('tikets')
+            ->select(
+                'tikets.id',
+                'tikets.id_user',
+                'tikets.no_tiket',
+                'tikets.created_at',
+                'tikets.pemohon',
+                'statuses.status',
+                'statuses.id',
+                'tikets.judul',
+                'units.divisi',
+                'prioritas.tipe',
+                'tikets.lokasi',
+                'tikets.kerusakan',
+                'statuses.warna',
+                'tikets.selesai'
+            )
+            // ->select('*')
+            ->join('units', 'tikets.id_unit', 'units.id')
+            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('statuses', 'tikets.id_status', 'statuses.id')
+            ->join('users', 'tikets.id_user', 'users.id')
+            ->where('statuses.id', 2);
+        if (Auth::user()->id != 1) {
+            $query->where('tikets.id_user', Auth::user()->id);
+        }
+
+        return $query->orderByDesc('tikets.id')->get();
+    }
+
+    public function tiketSelesai()
+    {
+        $query = DB::table('tikets')
+            ->select(
+                'tikets.id',
+                'tikets.id_user',
+                'tikets.no_tiket',
+                'tikets.created_at',
+                'tikets.pemohon',
+                'statuses.status',
+                'statuses.id',
+                'tikets.judul',
+                'units.divisi',
+                'prioritas.tipe',
+                'tikets.lokasi',
+                'tikets.kerusakan',
+                'statuses.warna',
+                'tikets.selesai'
+            )
+            // ->select('*')
+            ->join('units', 'tikets.id_unit', 'units.id')
+            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('statuses', 'tikets.id_status', 'statuses.id')
+            ->join('users', 'tikets.id_user', 'users.id')
+            ->where('statuses.id', 3);
+        if (Auth::user()->id != 1) {
+            $query->where('tikets.id_user', Auth::user()->id);
+        }
+
+        return $query->orderByDesc('tikets.id')->get();
+    }
+
+
+
+
 
     public function allOrder()
     {
@@ -199,6 +264,7 @@ class Tiket extends Model
         $query = DB::table('tikets')
             ->select(
                 'tikets.id',
+                'tikets.id_user',
                 'tikets.no_tiket',
                 'tikets.tanggal',
                 'tikets.pemohon',
@@ -218,6 +284,7 @@ class Tiket extends Model
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
             ->join('karyawans', 'users.id', 'karyawans.id_user')
+            ->where('tikets.id_user', Auth::user()->id)
             ->whereBetween('tikets.tanggal', [$tgl_awal, $tgl_akhir]);
 
 

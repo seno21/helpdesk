@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('divisi')->nullable();
             $table->string('kategori')->nullable();
-            $table->integer('id_prioritas');
             $table->timestamps();
         });
 

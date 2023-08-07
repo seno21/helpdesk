@@ -23,14 +23,14 @@
                       </a>
                       <div class="collapse" id="form-elements">
                           <ul class="nav flex-column sub-menu">
-                              <li class="nav-item">
-                                  <a class="nav-link" href="{{ route('tiket.new.index') }}">Tiket Baru</a>
+                              {{-- <li class="nav-item">
+                                  <a class="nav-link" href="{{ route('tiket.baru') }}">Tiket Baru</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="{{ route('tiket.new.index') }}">Tiket Proses</a>
-                              </li>
+                                  <a class="nav-link" href="{{ route('tiket.proses') }}">Tiket Proses</a>
+                              </li> --}}
                               <li class="nav-item">
-                                  <a class="nav-link" href="{{ route('tiket.new.index') }}">Tiket Selesai</a>
+                                  <a class="nav-link" href="{{ route('tiket.new.index') }}">Tiket</a>
                               </li>
                               <li class="nav-item">
                                   <a class="nav-link" href="{{ route('tiket.order.index') }}">Order</a>
@@ -62,7 +62,7 @@
                   <li class="nav-item">
                       <a class="nav-link" href="{{ route('laporan') }}" aria-expanded="false" aria-controls="charts">
                           <i class="ti-bookmark-alt menu-icon"></i>
-                          <span class="menu-title">Laporan</span>
+                          <span class="menu-title">History Ticket</span>
                       </a>
                   </li>
                   <li class="nav-item">
@@ -114,20 +114,13 @@
                       <div class="collapse" id="form-elements">
                           <ul class="nav flex-column sub-menu">
                               <li class="nav-item">
-                                  <a class="nav-link" href="{{ route('tiket.new.index') }}">Tiket</a>
-                              </li>
-                          </ul>
-                      </div>
-                      <div class="collapse" id="form-elements">
-                          <ul class="nav flex-column sub-menu">
-                              <li class="nav-item">
-                                  <a class="nav-link" href="{{ route('tiket.new.index') }}">Tiket Baru</a>
+                                  <a class="nav-link" href="{{ route('tiket.baru') }}">Tiket Baru</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="{{ route('tiket.new.index') }}">Tiket Proses</a>
+                                  <a class="nav-link" href="{{ route('tiket.proses') }}">Tiket Proses</a>
                               </li>
                               <li class="nav-item">
-                                  <a class="nav-link" href="{{ route('tiket.new.index') }}">Tiket Selesai</a>
+                                  <a class="nav-link" href="{{ route('tiket.selesai') }}">Tiket Selesai</a>
                               </li>
                           </ul>
                       </div>
