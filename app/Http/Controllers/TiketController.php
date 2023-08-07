@@ -107,7 +107,7 @@ class TiketController extends Controller
         $tiket->no_tiket = $request->no_tiket;
         $tiket->judul = $request->judul;
         $tiket->id_unit = $request->unit;
-        $tiket->lokasi = $request->lokasi;
+        // $tiket->lokasi = $request->lokasi;
         $tiket->pemohon = $pemohon->nama;
         $tiket->kerusakan = $request->kerusakan;
         $tiket->save();

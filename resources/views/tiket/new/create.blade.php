@@ -23,11 +23,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="judul">Subjek</label>
+                            <label for="judul">Judul Komplain</label>
                             <input type="text" class="form-control" name="judul" id="judul"
                                 value="{{ old('judul') }}">
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="unit">Unit Kerja</label>
@@ -44,19 +46,20 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="kerusakan">Jelaskan Keterangan Komplain</label>
+                            <textarea class="form-control" name="kerusakan" id="kerusakan" rows="8"></textarea>
+                        </div>
+                    </div>
+                </div>
+                {{-- <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label for="lokasi">Detail Lokasi</label>
                             <input type="text" class="form-control" name="lokasi" id="lokasi"
                                 value="{{ old('lokasi') }}">
                         </div>
                     </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="kerusakan">Deskripsi Kerusakan</label>
-                            <textarea class="form-control" name="kerusakan" id="kerusakan" rows="8"></textarea>
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
 
                 <button type="submit" class="btn btn-primary mr-2">Buat Tiket</button>
                 <a href="{{ route('tiket.new.index') }}" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i>

@@ -26,14 +26,13 @@ class Tiket extends Model
                 'tikets.judul',
                 'units.divisi',
                 'prioritas.tipe',
-                'tikets.lokasi',
                 'tikets.kerusakan',
                 'statuses.warna',
                 'tikets.selesai'
             )
             // ->select('*')
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id');
 
@@ -57,15 +56,12 @@ class Tiket extends Model
                 'statuses.id',
                 'tikets.judul',
                 'units.divisi',
-                'prioritas.tipe',
-                'tikets.lokasi',
                 'tikets.kerusakan',
                 'statuses.warna',
                 'tikets.selesai'
             )
             // ->select('*')
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
             ->where('statuses.id', 1);
@@ -90,14 +86,13 @@ class Tiket extends Model
                 'tikets.judul',
                 'units.divisi',
                 'prioritas.tipe',
-                'tikets.lokasi',
                 'tikets.kerusakan',
                 'statuses.warna',
                 'tikets.selesai'
             )
             // ->select('*')
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
             ->where('statuses.id', 2);
@@ -122,14 +117,13 @@ class Tiket extends Model
                 'tikets.judul',
                 'units.divisi',
                 'prioritas.tipe',
-                'tikets.lokasi',
                 'tikets.kerusakan',
                 'statuses.warna',
                 'tikets.selesai'
             )
             // ->select('*')
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
             ->where('statuses.id', 3);
@@ -158,13 +152,12 @@ class Tiket extends Model
                 'tikets.judul',
                 'units.divisi',
                 'prioritas.tipe',
-                'tikets.lokasi',
                 'tikets.kerusakan',
                 'statuses.warna'
             )
             // ->select('*')
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             // ->where('tikets.selesai', 0)
             ->orderBy('tikets.selesai')
@@ -188,12 +181,11 @@ class Tiket extends Model
                 'units.divisi',
                 'prioritas.id AS color',
                 'prioritas.tipe',
-                'tikets.lokasi',
                 'tikets.kerusakan',
                 'tikets.selesai'
             )
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->where('tikets.id', $id)
             ->first();
@@ -216,12 +208,11 @@ class Tiket extends Model
                 'units.divisi',
                 'prioritas.id AS color',
                 'prioritas.tipe',
-                'tikets.lokasi',
                 'tikets.kerusakan',
                 'tikets.selesai'
             )
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             // ->where('tikets.no_tiket', 'like', "%" . $no_tiket . "%")
             ->where('tikets.no_tiket', $no_tiket)
@@ -274,13 +265,12 @@ class Tiket extends Model
                 'units.divisi',
                 'prioritas.id AS color',
                 'prioritas.tipe',
-                'tikets.lokasi',
                 'tikets.kerusakan',
                 'tikets.selesai',
                 'karyawans.nama AS petugas',
             )
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'units.id_prioritas', 'prioritas.id')
+            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
             ->join('karyawans', 'users.id', 'karyawans.id_user')

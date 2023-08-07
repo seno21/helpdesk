@@ -17,13 +17,13 @@ return new class extends Migration
             $table->date('tanggal');
             $table->string('judul');
             $table->bigInteger('id_unit');
-            $table->string('lokasi');
+            // $table->string('lokasi');
             $table->text('kerusakan');
             $table->string('pemohon');
             $table->bigInteger('id_status')->default(1);
             $table->bigInteger('id_progres')->nullable();
             $table->bigInteger('id_user');
-            $table->bigInteger('id_prioritas');
+            $table->bigInteger('id_prioritas')->nullable();
             $table->integer('selesai')->default('0');
             $table->timestamps();
         });
