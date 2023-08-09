@@ -15,46 +15,29 @@
                                 value="{{ $tiket->no_tiket }}" readonly>
                         </div>
                     </div>
-                    {{-- <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="tgl_buat">Tanggal</label>
-                                <input type="datetime-local" class="form-control" name="tgl_buat" id="tgl_buat"
-                                    value="">
-                            </div>
-                        </div> --}}
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="judul">Subjek</label>
+                            <label for="judul">Judul Komplain</label>
                             <input type="text" class="form-control" name="judul" id="judul"
                                 value="{{ $tiket->judul }}">
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="unit">Unit Kerja</label>
                             <div>
                                 <select class="form-control" name="unit" id="unit">
-                                    @foreach ($units as $unit)
-                                        <option value="{{ $unit->id }}"
-                                            {{ $unit->id == $tiket->id_unit ? 'selected' : '' }}>
-                                            {{ $unit->divisi }}</option>
-                                    @endforeach
+                                    <option value="{{ $unit->id }}">{{ $unit->divisi }}</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="lokasi">Detail Lokasi</label>
-                            <input type="text" class="form-control" name="lokasi" id="lokasi"
-                                value="{{ $tiket->lokasi }}">
-                        </div>
-                    </div>
-
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="kerusakan">Deskripsi Kerusakan</label>
@@ -64,7 +47,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary mr-2">Edit Tiket</button>
-                <a href="{{ route('tiket.new.index') }}" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i>
+                <a href="{{ route('tiket.baru') }}" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i>
                     Back</a>
             </form>
         </div>

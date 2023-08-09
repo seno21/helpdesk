@@ -20,6 +20,16 @@ class Karyawan extends Model
             ->first();
     }
 
+    public function showUnitKaryawan($id)
+    {
+        return DB::table('karyawans')
+            ->select('*')
+            ->join('users', 'karyawans.id_user', 'users.id')
+            ->join('units', 'karyawans.id_unit', 'units.id')
+            ->where('users.id', $id)
+            ->first();
+    }
+
     public function pemohon($id)
     {
         return DB::table('karyawans')

@@ -8,9 +8,11 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <div class="mb-3">
-                                <a href="{{ route('tiket.new.create') }}" class="btn btn-primary"><i
-                                        class="fa-solid fa-solid fa-ticket mr-1"></i>New Ticket
-                                </a>
+                                @if (Auth::user()->id_role === 3)
+                                    <a href="{{ route('tiket.new.create') }}" class="btn btn-primary"><i
+                                            class="fa-solid fa-solid fa-ticket mr-1"></i>New Ticket
+                                    </a>
+                                @endif
                             </div>
                             <table class="table table-striped table-hover" id="DataTables">
                                 <thead>
@@ -61,16 +63,20 @@
                                             {{-- <td>{!! $tiket->kerusakan !!}</td> --}}
                                             <td>
                                                 <div class="d-flex">
+                                                    @if (Auth::user()->id_role === 1)
+                                                        <a href="{{ route('tiket.order.edit', $tiket->id) }}"
+                                                            class="ml-2 btn btn-sm btn-success">
+                                                            <i class="fa-solid fa-reply mr-1"></i>
+                                                        </a>
+                                                    @endif
                                                     <a href="{{ route('tiket.new.show', $tiket->id) }}"
                                                         class="btn btn-sm btn-info">
                                                         <i class="fa-solid fa-circle-info mr-1"></i>
                                                     </a>
-                                                    @if ($tiket->selesai != 1)
-                                                        <a href="{{ route('tiket.new.edit', $tiket->id) }}"
-                                                            class="ml-2 btn btn-sm btn-warning" disabled>
-                                                            <i class="fa-solid fa-pen-to-square mr-1"></i>
-                                                        </a>
-                                                    @endif
+                                                    <a href="{{ route('tiket.new.edit', $tiket->id) }}"
+                                                        class="ml-2 btn btn-sm btn-warning" disabled>
+                                                        <i class="fa-solid fa-pen-to-square mr-1"></i>
+                                                    </a>
                                                     <form class="ml-2"
                                                         action="{{ route('tiket.new.destroy', $tiket->id) }}"
                                                         method="POST">

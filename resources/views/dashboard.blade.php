@@ -36,15 +36,14 @@
                     </div>
                 </div>
             </div>
-            @if (Auth::user()->id_role === 1)
+            @if (Auth::user()->id_role === 1 || Auth::user()->id_role === 2)
                 <div class="col-md-6 grid-margin transparent">
                     <div class="row">
                         <div class="col-md-6 mb-4 stretch-card transparent">
-                            <div class="card card-tale">
+                            <div class="card bg-primary text-light">
                                 <div class="card-body">
-                                    <p class="mb-4">Jumlah Tiket</p>
-                                    <p class="fs-30 mb-2">{{ $masuk }} Tiket</p>
-                                    <p><i>Jumlah ini selain tiket yng sudah selesai</i></p>
+                                    <p class="mb-4">Total Tiket Baru</p>
+                                    <p class="fs-30 mb-2">{{ $baru }} Tiket</p>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +52,6 @@
                                 <div class="card-body">
                                     <p class="mb-4">Total Tiket Selesai</p>
                                     <p class="fs-30 mb-2">{{ $selesai }} Tiket</p>
-                                    <p><i>Jumlah keseluruhan tiket selesai</i></p>
                                 </div>
                             </div>
                         </div>
@@ -62,17 +60,17 @@
                         <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                             <div class="card bg-success text-light">
                                 <div class="card-body">
-                                    <p class="mb-4">Permintaan Tiket Masuk</p>
-                                    <p class="fs-30 mb-2">{{ $open }} Tiket</p>
-                                    <p>Jumlah tiket bersatus open</p>
+                                    <p class="mb-4">Total Tiket</p>
+                                    <p class="fs-30 mb-2">{{ $baru }} Tiket</p>
+                                    <p>Jumlah tiket selain tiket yang sudah selesai</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 stretch-card transparent">
-                            <div class="card card-dark-blue">
+                            <div class="card bg-secondary text-light">
                                 <div class="card-body">
                                     <p class="mb-4">Total Jumlah User</p>
-                                    <p class="fs-30 mb-2">{{ $user }} Karyawan</p>
+                                    <p class="fs-30 mb-2">{{ $user }} User</p>
                                     <p>Jumlah pengguna aktif selain Petugas IT</p>
                                 </div>
                             </div>

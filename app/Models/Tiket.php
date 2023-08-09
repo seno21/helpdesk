@@ -53,7 +53,7 @@ class Tiket extends Model
                 'tikets.created_at',
                 'tikets.pemohon',
                 'statuses.status',
-                'statuses.id',
+                'statuses.id as id_status',
                 'tikets.judul',
                 'units.divisi',
                 'tikets.kerusakan',
@@ -69,7 +69,7 @@ class Tiket extends Model
             $query->where('tikets.id_user', Auth::user()->id);
         }
 
-        return $query->orderByDesc('tikets.id')->get();
+        return $query->get();
     }
 
     public function tiketProses()
@@ -185,7 +185,7 @@ class Tiket extends Model
                 'tikets.selesai'
             )
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
+            // ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->where('tikets.id', $id)
             ->first();
@@ -230,7 +230,7 @@ class Tiket extends Model
         return $hitung;
     }
 
-    public function countFinishTiket()
+    public function countTiketSelesai()
     {
         $hitung = DB::table('tikets')
             ->where('selesai', 1)
@@ -239,7 +239,7 @@ class Tiket extends Model
         return $hitung;
     }
 
-    public function countOpenTiket()
+    public function countTiketbaru()
     {
         $hitung = DB::table('tikets')
             ->where('id_status', 1)
@@ -276,8 +276,6 @@ class Tiket extends Model
             ->join('karyawans', 'users.id', 'karyawans.id_user')
             ->where('tikets.id_user', Auth::user()->id)
             ->whereBetween('tikets.tanggal', [$tgl_awal, $tgl_akhir]);
-
-
 
         return $query->get();
     }

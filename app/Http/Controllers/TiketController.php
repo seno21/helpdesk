@@ -11,30 +11,31 @@ use Illuminate\Support\Facades\Auth;
 
 class TiketController extends Controller
 {
-    public function index()
-    {
-        $tiket = new Tiket();
-        // dd($tiket->allTiket());
+    // public function index()
+    // {
+    //     $tiket = new Tiket();
+    //     // dd($tiket->allTiket());
 
-        $data = [
-            'title' => 'Tiket list',
-            'tikets' => $tiket->allTiket()
-        ];
+    //     $data = [
+    //         'title' => 'Tiket list',
+    //         'tikets' => $tiket->allTiket()
+    //     ];
 
-        return view('tiket.new.index', $data);
-    }
+    //     return view('tiket.new.index', $data);
+    // }
 
     public function baru()
     {
+
         $tiket = new Tiket();
-        // dd($tiket->allTiket());
+        // dd($tiket->tiketBaru());
 
         $data = [
             'title' => 'Tiket list',
             'tikets' => $tiket->tiketBaru()
         ];
 
-        return view('tiket.new.index', $data);
+        return view('tiket.new.tiketBaru', $data);
     }
 
     public function proses()
@@ -47,7 +48,7 @@ class TiketController extends Controller
             'tikets' => $tiket->tiketProses()
         ];
 
-        return view('tiket.new.index', $data);
+        return view('tiket.new.tiketProses', $data);
     }
 
     public function selesai()
@@ -60,7 +61,7 @@ class TiketController extends Controller
             'tikets' => $tiket->tiketSelesai()
         ];
 
-        return view('tiket.new.index', $data);
+        return view('tiket.new.tiketSelesai', $data);
     }
 
     public function show($id)
@@ -70,6 +71,7 @@ class TiketController extends Controller
         $progres = new Progres();
 
         $tiket = $detail->showTiket($id);
+        dd($tiket);
         // dd($progres->petugas($tiket->no_tiket));
         $data = [
             'title' => 'Detail Permintaan Tiket',
@@ -84,9 +86,10 @@ class TiketController extends Controller
 
     public function create()
     {
+        $karyawan = new Karyawan();
         $data = [
             'title' => 'Formulir Create Ticket',
-            'units' => Unit::all()
+            'unit' => $karyawan->showUnitKaryawan(Auth::user()->id)
         ];
 
         return view('tiket.new.create', $data);
@@ -117,10 +120,11 @@ class TiketController extends Controller
 
     public function edit($id)
     {
+        $karyawan = new Karyawan();
         $data = [
             'title' => 'Formulir Edit Tiket',
             'tiket' => Tiket::find($id),
-            'units' => Unit::all()
+            'unit' => $karyawan->showUnitKaryawan(Auth::user()->id)
         ];
 
         return view('tiket.new.edit', $data);
@@ -139,12 +143,11 @@ class TiketController extends Controller
         $tiket->no_tiket = $request->no_tiket;
         $tiket->judul = $request->judul;
         $tiket->id_unit = $request->unit;
-        $tiket->lokasi = $request->lokasi;
         $tiket->kerusakan = $request->kerusakan;
         $tiket->pemohon = $pemohon->nama;
         $tiket->save();
 
-        return redirect()->route('tiket.new.index')->with('toast_success', 'Berhasil Mengupdate Tiket');
+        return redirect()->route('tiket.baru')->with('toast_success', 'Berhasil Mengupdate Tiket');
     }
 
     public function destroy($id)

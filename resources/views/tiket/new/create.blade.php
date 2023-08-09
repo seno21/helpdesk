@@ -35,9 +35,7 @@
                             <label for="unit">Unit Kerja</label>
                             <div>
                                 <select class="form-control" name="unit" id="unit">
-                                    @foreach ($units as $unit)
-                                        <option value="{{ $unit->id }}">{{ $unit->divisi }}</option>
-                                    @endforeach
+                                    <option value="{{ $unit->id }}">{{ $unit->divisi }}</option>
                                 </select>
                             </div>
                         </div>
@@ -62,7 +60,7 @@
                 </div> --}}
 
                 <button type="submit" class="btn btn-primary mr-2">Buat Tiket</button>
-                <a href="{{ route('tiket.new.index') }}" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i>
+                <a href="{{ route('tiket.baru') }}" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i>
                     Back</a>
             </form>
         </div>

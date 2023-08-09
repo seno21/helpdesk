@@ -19,9 +19,9 @@ class DashboardController extends Controller
 
         $data = [
             'title' => 'Helpdesk Ticketing System',
-            'masuk' => $tiket->countTiket(),
-            'selesai' => $tiket->countFinishTiket(),
-            'open' => $tiket->countOpenTiket(),
+            'total' => $tiket->countTiket(),
+            'baru' => $tiket->countTiketbaru(),
+            'selesai' => $tiket->countTiketSelesai(),
             'user' => $karyawan->countKaryawan()
         ];;
 
