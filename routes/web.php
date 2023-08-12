@@ -65,6 +65,9 @@ Route::group(['middleware' => 'isLogin', 'prefix' => 'tiket', 'as' => 'tiket.'],
     Route::get('baru', [TiketController::class, 'baru'])->name('baru');
     Route::get('proses', [TiketController::class, 'proses'])->name('proses');
     Route::get('selesai', [TiketController::class, 'selesai'])->name('selesai');
+
+    Route::get('tugas/{id}/edit', [TiketController::class, 'editTugas'])->name('tugas.edit');
+    Route::put('tugas/{id}', [TiketController::class, 'updateTugas'])->name('tugas.update');
 });
 
 

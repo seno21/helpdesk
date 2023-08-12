@@ -7,6 +7,7 @@ use App\Models\Progres;
 use App\Models\Status;
 use App\Models\Tiket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Expr\FuncCall;
 
 class OrderController extends Controller
@@ -16,7 +17,7 @@ class OrderController extends Controller
         $tiket = new Tiket();
         $data = [
             'title' => 'Order List',
-            'tikets' => $tiket->allOrder()
+            'tikets' => $tiket->allOrder(Auth::user()->id)
         ];
 
         return view('tiket.order.index', $data);
@@ -38,6 +39,7 @@ class OrderController extends Controller
 
         return view('tiket.order.show', $data);
     }
+
 
     public function edit($id)
     {

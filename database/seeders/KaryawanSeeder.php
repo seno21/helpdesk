@@ -45,7 +45,7 @@ class KaryawanSeeder extends Seeder
                 'telepon' => '+62-89661499552',
                 'alamat' => 'Desa. Konohagakure, Negeri Api',
                 'lokasi' => 'Farmasi Rawat Jalan',
-                'id_user' => 2,
+                'id_user' => 3,
                 'id_unit' => 2
             ],
 
@@ -57,7 +57,7 @@ class KaryawanSeeder extends Seeder
                 'telepon' => '+62-89123321112',
                 'alamat' => 'Kota Toarosi, Tokyo Jepang',
                 'lokasi' => 'Nurstation Lantai 1',
-                'id_user' => 3,
+                'id_user' => 4,
                 'id_unit' => 3
             ]
         ];

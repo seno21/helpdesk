@@ -60,9 +60,9 @@
                         <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
                             <div class="card bg-success text-light">
                                 <div class="card-body">
-                                    <p class="mb-4">Total Tiket</p>
-                                    <p class="fs-30 mb-2">{{ $baru }} Tiket</p>
-                                    <p>Jumlah tiket selain tiket yang sudah selesai</p>
+                                    <p class="mb-4">Tiket Dalam Proses</p>
+                                    <p class="fs-30 mb-2">{{ $total }} Tiket</p>
+                                    <p>Jumlah tiket dalam proses penanganan petugas</p>
                                 </div>
                             </div>
                         </div>

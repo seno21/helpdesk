@@ -21,14 +21,14 @@
                                         <th>Tanggal Dibuat</th>
                                         <th>Judul</th>
                                         <th>Unit</th>
-                                        {{-- <th>Prioritas</th> --}}
+                                        {{-- <th>Petugas</th> --}}
                                         <th>Status</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($tikets as $tiket)
-                                        <tr class="{{ $tiket->selesai === 1 ? 'bg-secondary' : '' }}">
+                                        <tr class="{{ $tiket->prioritas != null ? 'bg-secondary' : '' }}">
                                             <td>{{ $tiket->no_tiket }}</td>
                                             <td>
                                                 @php
@@ -54,6 +54,7 @@
                                                         </label>
                                                     @endif
                                                 </td> --}}
+
                                             <td>
                                                 <label class="badge font-weight-bold text-light"
                                                     style="background: {{ $tiket->warna }};">
@@ -63,29 +64,33 @@
                                             {{-- <td>{!! $tiket->kerusakan !!}</td> --}}
                                             <td>
                                                 <div class="d-flex">
-                                                    @if (Auth::user()->id_role === 1)
-                                                        <a href="{{ route('tiket.order.edit', $tiket->id) }}"
-                                                            class="ml-2 btn btn-sm btn-success">
+                                                    @if (Auth::user()->id_role === 1 && $tiket->prioritas == null)
+                                                        <a href="{{ route('tiket.tugas.edit', $tiket->id) }}"
+                                                            class=" btn btn-sm btn-success">
                                                             <i class="fa-solid fa-reply mr-1"></i>
                                                         </a>
                                                     @endif
                                                     <a href="{{ route('tiket.new.show', $tiket->id) }}"
-                                                        class="btn btn-sm btn-info">
+                                                        class="ml-2 btn btn-sm btn-info">
                                                         <i class="fa-solid fa-circle-info mr-1"></i>
                                                     </a>
-                                                    <a href="{{ route('tiket.new.edit', $tiket->id) }}"
-                                                        class="ml-2 btn btn-sm btn-warning" disabled>
-                                                        <i class="fa-solid fa-pen-to-square mr-1"></i>
-                                                    </a>
-                                                    <form class="ml-2"
-                                                        action="{{ route('tiket.new.destroy', $tiket->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-sm btn-danger" id="btnDelete">
-                                                            <i class="fa-solid fa-trash mr-1"></i>
-                                                        </button>
-                                                    </form>
+
+                                                    @if (Auth::user()->id_role != 1)
+                                                        <a href="{{ route('tiket.new.edit', $tiket->id) }}"
+                                                            class="ml-2 btn btn-sm btn-warning" disabled>
+                                                            <i class="fa-solid fa-pen-to-square mr-1"></i>
+                                                        </a>
+                                                        <form class="ml-2"
+                                                            action="{{ route('tiket.new.destroy', $tiket->id) }}"
+                                                            method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-sm btn-danger"
+                                                                id="btnDelete">
+                                                                <i class="fa-solid fa-trash mr-1"></i>
+                                                            </button>
+                                                        </form>
+                                                    @endif
                                                 </div>
                                             </td>
                                         </tr>

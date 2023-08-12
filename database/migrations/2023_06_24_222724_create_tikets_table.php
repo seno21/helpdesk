@@ -22,8 +22,9 @@ return new class extends Migration
             $table->string('pemohon');
             $table->bigInteger('id_status')->default(1);
             $table->bigInteger('id_progres')->nullable();
-            $table->bigInteger('id_user');
-            $table->bigInteger('id_prioritas')->nullable();
+            $table->bigInteger('id_user'); //Ini untuk triger user pemohon
+            $table->bigInteger('id_karyawan')->nullable(); //Ini adalah untuk petugas IT
+            $table->string('prioritas')->nullable();
             $table->integer('selesai')->default('0');
             $table->timestamps();
         });

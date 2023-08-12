@@ -67,17 +67,16 @@ class TiketController extends Controller
     public function show($id)
     {
 
-        $detail = new Tiket();
+        $tiket = new Tiket();
         $progres = new Progres();
 
-        $tiket = $detail->showTiket($id);
-        dd($tiket);
-        // dd($progres->petugas($tiket->no_tiket));
+        $noTiket = $tiket->showTiket($id);
+        // dd($detail->showPetugas($id));
         $data = [
             'title' => 'Detail Permintaan Tiket',
-            'detail' => $detail->showTiket($id),
-            'progreses' => $progres->showProgres($tiket->no_tiket),
-            'petugas' => $progres->petugas($tiket->no_tiket)
+            'detail' => $tiket->showTiket($id),
+            'petugas' => $tiket->showPetugas($id),
+            'progreses' => $progres->showProgres($noTiket->no_tiket),
         ];
 
         return view('tiket.new.show', $data);
@@ -154,8 +153,9 @@ class TiketController extends Controller
     {
         // Mencari data dulu
         $tiket = Tiket::find($id);
+        // dd($tiket->id_karyawan);
 
-        if ($tiket->selesai != 1) {
+        if ($tiket->selesai != 1 || $tiket->id_karyawan != null) {
             // Delete di tabel progress
             $progres = new Progres;
             $progres->deleteProgres($tiket->no_tiket);
@@ -163,7 +163,29 @@ class TiketController extends Controller
             $tiket->delete();
             return redirect()->back()->with('toast_success', 'Berhasil Hapus Data Permanen');
         } else {
-            return redirect()->back()->with('toast_error', 'Permintaan Telah selesai, Data Tidak Bisa Dihapus');
+            return redirect()->back()->with('toast_error', 'Data Tidak Bisa Dihapus');
         }
+    }
+
+    public function editTugas($id)
+    {
+        $data = [
+            'title' => 'Penangnan Komplain',
+            'tiket' => Tiket::find($id),
+            'karyawans' => Karyawan::all()
+        ];
+
+        return view('tiket.new.editPetugas', $data);
+    }
+
+    public function updateTugas(Request $request, $id)
+    {
+        $tiket = Tiket::find($id);
+
+        $tiket->id_karyawan = $request->petugas;
+        $tiket->prioritas = $request->prioritas;
+        $tiket->save();
+
+        return redirect()->route('tiket.baru')->with('toast_success', 'Berhasil update data');
     }
 }

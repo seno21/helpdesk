@@ -37,17 +37,17 @@
                                             <td>{{ $tiket->judul }}</td>
                                             <td>{{ $tiket->divisi }}</td>
                                             <td>
-                                                @if ($tiket->color == '1')
+                                                @if ($tiket->prioritas === 'Hight')
                                                     <label class="badge badge-danger font-weigh-bold">
-                                                        {{ $tiket->tipe }}
+                                                        {{ $tiket->prioritas }}
                                                     </label>
-                                                @elseif ($tiket->color == '2')
+                                                @elseif ($tiket->prioritas == 'Medium')
                                                     <label class="badge badge-warning font-weigh-bold">
-                                                        {{ $tiket->tipe }}
+                                                        {{ $tiket->prioritas }}
                                                     </label>
-                                                @else
+                                                @elseif ($tiket->prioritas == 'Low')
                                                     <label class="badge badge-success font-weigh-bold">
-                                                        {{ $tiket->tipe }}
+                                                        {{ $tiket->prioritas }}
                                                     </label>
                                                 @endif
                                             </td>

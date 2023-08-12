@@ -157,7 +157,7 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="false"
+                      <a class="nav-link" href="{{ route('search') }}" aria-expanded="false"
                           aria-controls="ui-basic">
                           <i class="ti-search menu-icon"></i>
                           <span class="menu-title">Lacak</span>

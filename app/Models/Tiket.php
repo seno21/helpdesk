@@ -56,6 +56,7 @@ class Tiket extends Model
                 'statuses.id as id_status',
                 'tikets.judul',
                 'units.divisi',
+                'tikets.prioritas',
                 'tikets.kerusakan',
                 'statuses.warna',
                 'tikets.selesai'
@@ -85,17 +86,15 @@ class Tiket extends Model
                 'statuses.id',
                 'tikets.judul',
                 'units.divisi',
-                'prioritas.tipe',
                 'tikets.kerusakan',
                 'statuses.warna',
                 'tikets.selesai'
             )
             // ->select('*')
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
-            ->where('statuses.id', 2);
+            ->whereNotIn('statuses.id', [1, 3]);
         if (Auth::user()->id != 1) {
             $query->where('tikets.id_user', Auth::user()->id);
         }
@@ -116,14 +115,12 @@ class Tiket extends Model
                 'statuses.id',
                 'tikets.judul',
                 'units.divisi',
-                'prioritas.tipe',
                 'tikets.kerusakan',
                 'statuses.warna',
                 'tikets.selesai'
             )
             // ->select('*')
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
             ->where('statuses.id', 3);
@@ -138,28 +135,28 @@ class Tiket extends Model
 
 
 
-    public function allOrder()
+    public function allOrder($id)
     {
         $tiket = DB::table('tikets')
             ->select(
                 'tikets.id',
                 'tikets.selesai',
-                'prioritas.id AS color',
+                'tikets.prioritas',
                 'tikets.no_tiket',
                 'tikets.created_at',
                 'tikets.pemohon',
                 'statuses.status',
                 'tikets.judul',
                 'units.divisi',
-                'prioritas.tipe',
                 'tikets.kerusakan',
                 'statuses.warna'
             )
             // ->select('*')
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
-            // ->where('tikets.selesai', 0)
+            ->join('karyawans', 'tikets.id_karyawan', 'karyawans.id')
+            ->join('users', 'karyawans.id_user', 'users.id')
+            ->where('tikets.id_user', $id)
             ->orderBy('tikets.selesai')
             ->get();
 
@@ -179,14 +176,29 @@ class Tiket extends Model
                 'statuses.warna',
                 'tikets.judul',
                 'units.divisi',
-                'prioritas.id AS color',
-                'prioritas.tipe',
                 'tikets.kerusakan',
-                'tikets.selesai'
+                'tikets.selesai',
+                'tikets.prioritas',
+                'karyawans.lokasi'
             )
             ->join('units', 'tikets.id_unit', 'units.id')
-            // ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
+            ->join('users', 'tikets.id_user', 'users.id')
+            ->join('karyawans', 'users.id', 'karyawans.id_user')
+            ->where('tikets.id', $id)
+            ->first();
+
+        return $detail;
+    }
+
+    public function showPetugas($id)
+    {
+        $detail = DB::table('tikets')
+            ->select(
+                'tikets.id',
+                'karyawans.nama'
+            )
+            ->join('karyawans', 'tikets.id_karyawan', 'karyawans.id')
             ->where('tikets.id', $id)
             ->first();
 
@@ -206,13 +218,10 @@ class Tiket extends Model
                 'statuses.warna',
                 'tikets.judul',
                 'units.divisi',
-                'prioritas.id AS color',
-                'prioritas.tipe',
                 'tikets.kerusakan',
                 'tikets.selesai'
             )
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             // ->where('tikets.no_tiket', 'like', "%" . $no_tiket . "%")
             ->where('tikets.no_tiket', $no_tiket)
@@ -225,6 +234,7 @@ class Tiket extends Model
     {
         $hitung = DB::table('tikets')
             // ->where('selesai', 0)
+            ->whereNotIn('id_status', [1, 3])
             ->count();
 
         return $hitung;
@@ -233,7 +243,7 @@ class Tiket extends Model
     public function countTiketSelesai()
     {
         $hitung = DB::table('tikets')
-            ->where('selesai', 1)
+            ->where('id_status', 3)
             ->count();
 
         return $hitung;
