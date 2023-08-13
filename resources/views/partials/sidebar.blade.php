@@ -116,13 +116,13 @@
                           </ul>
                       </div>
                   </li>
-                  <li class="nav-item">
+                  {{-- <li class="nav-item">
                       <a class="nav-link" href="{{ route('laporan') }}" aria-expanded="false"
                           aria-controls="charts">
                           <i class="ti-bookmark-alt menu-icon"></i>
                           <span class="menu-title">History Ticket</span>
                       </a>
-                  </li>
+                  </li> --}}
                   <li class="nav-item">
                       <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false"
                           aria-controls="auth">

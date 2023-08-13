@@ -2,7 +2,7 @@
 @section('content')
     <div class="card min-vh-100">
         <div class="card-body">
-            <h4 class="card-title">LAPORAN</h4>
+            <h4 class="card-title">History Tiket</h4>
             <form class="forms-sample" method="GET" action="{{ route('laporan') }}">
                 @csrf
                 <div class="row">
