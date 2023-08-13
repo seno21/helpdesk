@@ -16,8 +16,6 @@ class LaporanController extends Controller
         $tgl_awal = $request->tgl_awal;
         $tgl_akhir = $request->tgl_akhir;
 
-        // dd($status);
-
         $data = [
             'title' => 'Laporan Tiket',
             'laporans' => $tiket->laporan($tgl_awal, $tgl_akhir),

@@ -23,31 +23,24 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th>Pemohon</th>
-                                        <th>:</th>
-                                        <th>{{ $detail->pemohon }}</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Petugas</th>
-                                        <th>:</th>
-                                        <th>{{ $petugas != null ? $petugas->nama : '-' }}</th>
-                                    </tr>
-                                    <tr>
                                         <th>Prioritas</th>
                                         <th>:</th>
                                         <th>
-                                            @if ($detail->color == '1')
+                                            {{-- {{ $detail->prioritas }} --}}
+                                            @if ($detail->prioritas === 'Hight')
                                                 <label class="badge badge-danger font-weigh-bold">
-                                                    {{ $detail->tipe }}
+                                                    {{ $detail->prioritas }}
                                                 </label>
-                                            @elseif ($detail->color == '2')
+                                            @elseif ($detail->prioritas === 'Medium')
                                                 <label class="badge badge-warning font-weigh-bold">
-                                                    {{ $detail->tipe }}
+                                                    {{ $detail->prioritas }}
+                                                </label>
+                                            @elseif ($detail->prioritas === 'Low')
+                                                <label class="badge badge-success font-weigh-bold">
+                                                    {{ $detail->prioritas }}
                                                 </label>
                                             @else
-                                                <label class="badge badge-success font-weigh-bold">
-                                                    {{ $detail->tipe }}
-                                                </label>
+                                                <label>-</label>
                                             @endif
                                         </th>
                                     </tr>
@@ -81,14 +74,15 @@
                                         <div class="line h-100"></div>
                                     </div>
                                     <div>
-                                        <h4 class="mt-1">Pemohon: <b><u><i>{{ $detail->pemohon }}</i></u></b></h4>
-                                        <h5>
+                                        <h4 class="mt-1"><b>Pemohon: </b>{{ $detail->pemohon }}</h4>
+                                        <h4 class="mt-1"><b>Petugas: </b>{{ $petugas }}</h4>
+                                        <h5 class="mt-4">
                                             @php
                                                 $tgl = date_create($detail->tanggal);
                                                 echo date_format($tgl, 'd/m/Y H:i:s A');
                                             @endphp
                                         </h5>
-                                        <h5 class="mt-4">Deskripsi.</h5>
+                                        <h5 class="mt-1">Deskripsi.</h5>
                                         <p class="pb-3">
                                             {{ $detail->kerusakan }}
                                         </p>
@@ -111,10 +105,7 @@
                                         </div>
 
                                         <div>
-                                            <h4 class="mt-2">Petugas:
-                                                <b><u><i>{{ $progres->nama }}</i></u></b>
-                                            </h4>
-                                            <h5>
+                                            <h5 class="mt-2">
                                                 @php
                                                     $tgl_proses = date_create($progres->tgl_proses);
                                                     echo date_format($tgl_proses, 'd/m/y H:i:s A');

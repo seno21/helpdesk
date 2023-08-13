@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="petugas">Petugas</label>
@@ -38,18 +38,16 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             <label for="status">Status</label>
                             <div>
                                 <select class="form-control" name="status" id="status">
-                                    @foreach ($statuses as $status)
-                                        <option value="{{ $status->id }}">
-                                            {{ $status->status }}
-                                        </option>
-                                    @endforeach
+                                    <option value="3">
+                                        Selesai
+                                    </option>
                                 </select>
                             </div>
                         </div>

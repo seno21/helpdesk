@@ -15,6 +15,8 @@ class OrderController extends Controller
     public function index()
     {
         $tiket = new Tiket();
+        // dd(Auth::user()->id);
+        // dd($tiket->allOrder(Auth::user()->id));
         $data = [
             'title' => 'Order List',
             'tikets' => $tiket->allOrder(Auth::user()->id)
@@ -28,13 +30,19 @@ class OrderController extends Controller
         $detail = new Tiket();
         $progres = new Progres();
 
+        // dd($detail->showTiket($id));
         $tiket = $detail->showTiket($id);
         // dd($progres->petugas($tiket->no_tiket));
+
+        // Filter jika petugas kosong
+        $petugas = $detail->showPetugas($id);
+        $petugasNama = $petugas->nama ?? '-';
+
         $data = [
             'title' => 'Detail Permintaan Tiket',
             'detail' => $detail->showTiket($id),
             'progreses' => $progres->showProgres($tiket->no_tiket),
-            'petugas' => $progres->petugas($tiket->no_tiket)
+            'petugas' => $petugasNama
         ];
 
         return view('tiket.order.show', $data);
@@ -57,7 +65,7 @@ class OrderController extends Controller
     {
         $request->validate([
             'tgl_proses' => 'required',
-            'petugas' => 'required',
+            // 'petugas' => 'required',
             'status' => 'required',
             'deskripsi' => 'required'
         ]);
@@ -69,7 +77,7 @@ class OrderController extends Controller
             $tiket->save();
 
             $progres = new Progres();
-            $progres->id_karyawan = $request->petugas;
+            // $progres->id_karyawan = $request->petugas;
             $progres->no_tiket = $tiket->no_tiket;
             $progres->tgl_proses = $request->tgl_proses;
             $progres->deskripsi = $request->deskripsi;
@@ -99,7 +107,7 @@ class OrderController extends Controller
     {
         $request->validate([
             'tgl_proses' => 'required',
-            'petugas' => 'required',
+            // 'petugas' => 'required',
             'status' => 'required',
             'deskripsi' => 'required'
         ]);
@@ -114,7 +122,7 @@ class OrderController extends Controller
             $tiket->save();
 
             $progres = new Progres();
-            $progres->id_karyawan = $request->petugas;
+            // $progres->id_karyawan = $request->petugas;
             $progres->no_tiket = $tiket->no_tiket;
             $progres->tgl_proses = $request->tgl_proses;
             $progres->deskripsi = $request->deskripsi;

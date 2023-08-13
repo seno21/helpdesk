@@ -71,12 +71,19 @@ class TiketController extends Controller
         $progres = new Progres();
 
         $noTiket = $tiket->showTiket($id);
-        // dd($detail->showPetugas($id));
+
+        // Filter jika petugas kosong
+        $petugas = $tiket->showPetugas($id);
+        $petugasNama = $petugas->nama ?? '-';
+
+        // dd($progres->showProgres($noTiket->no_tiket));
+
         $data = [
             'title' => 'Detail Permintaan Tiket',
             'detail' => $tiket->showTiket($id),
-            'petugas' => $tiket->showPetugas($id),
+            'petugas' => $petugasNama,
             'progreses' => $progres->showProgres($noTiket->no_tiket),
+            'selesai' => $progres->tglSelesai($noTiket->no_tiket)
         ];
 
         return view('tiket.new.show', $data);
@@ -139,6 +146,11 @@ class TiketController extends Controller
 
         $tiket = Tiket::find($id);
 
+        // Filter jikatiket sudah di ekesekusi
+        if ($tiket->selesai === 1 || $tiket->id_karyawan != null) {
+            return redirect()->back()->with('toast_info', 'Permintaan Sudah di Proses');
+        }
+
         $tiket->no_tiket = $request->no_tiket;
         $tiket->judul = $request->judul;
         $tiket->id_unit = $request->unit;
@@ -155,16 +167,16 @@ class TiketController extends Controller
         $tiket = Tiket::find($id);
         // dd($tiket->id_karyawan);
 
-        if ($tiket->selesai != 1 || $tiket->id_karyawan != null) {
-            // Delete di tabel progress
-            $progres = new Progres;
-            $progres->deleteProgres($tiket->no_tiket);
-            // Detelet di tabel tikets
-            $tiket->delete();
-            return redirect()->back()->with('toast_success', 'Berhasil Hapus Data Permanen');
-        } else {
-            return redirect()->back()->with('toast_error', 'Data Tidak Bisa Dihapus');
+        if ($tiket->selesai === 1 || $tiket->id_karyawan != null) {
+            return redirect()->back()->with('toast_info', 'Sedang Dalam Proses, Data Tidak Bisa Dihapus');
         }
+
+        // Delete di tabel progress
+        $progres = new Progres;
+        $progres->deleteProgres($tiket->no_tiket);
+        // Detelet di tabel tikets
+        $tiket->delete();
+        return redirect()->back()->with('toast_success', 'Berhasil Hapus asasData Permanen');
     }
 
     public function editTugas($id)

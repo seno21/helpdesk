@@ -84,7 +84,7 @@
                                     <th class="bg-secondary">Petugas</th>
                                     <th>:</th>
                                     <th>
-                                        {{ $petugas->nama }}
+                                        {{ $petugas }}
                                     </th>
                                 </tr>
                                 {{-- <tr>
@@ -98,15 +98,14 @@
                                     <th class="bg-secondary">Tanggal selesai</th>
                                     <th>:</th>
                                     <th>
-                                        {{-- @if ($petugas != null)
-                                            @php
-                                                $tgl = date_create($petugas->tgl_proses);
+                                        @php
+                                            if ($selesai != null) {
+                                                $tgl = date_create($selesai->tgl_proses);
                                                 echo date_format($tgl, 'd/m/Y H:i:s A');
-                                            @endphp
-                                        @else
-                                            -
-                                        @endif --}}
-
+                                            } else {
+                                                echo '-';
+                                            }
+                                        @endphp
                                     </th>
                                 </tr>
                             </table>
@@ -114,9 +113,8 @@
                     </div>
                     <div class="row">
                         <div class="mt-2">
-                            <a href="{{ route('tiket.baru') }}" class="btn btn-light"><i
-                                    class="fa-solid fa-arrow-left"></i>
-                                Tiket Baru</a>
+                            <a href="{{ route('dashboard') }}" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i>
+                                Beranda</a>
                         </div>
                     </div>
                 </div>

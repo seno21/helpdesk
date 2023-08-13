@@ -29,18 +29,19 @@
             <table class="table table-striped table-hover mt-5" id="DataTables">
                 <thead>
                     <tr>
+                        <th>No. Tiket</th>
                         <th>Tanggal</th>
                         <th>Judul</th>
                         <th>Unit</th>
                         <th>Prioritas</th>
                         <th>Status</th>
-                        <th>Petugas</th>
                         <th class="text-center">Pemohon</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($laporans as $laporan)
                         <tr>
+                            <td>{{ $laporan->no_tiket }}</td>
                             <td>
                                 @php
                                     $tgl = date_create($laporan->tanggal);
@@ -49,9 +50,28 @@
                             </td>
                             <td>{{ $laporan->judul }}</td>
                             <td>{{ $laporan->divisi }}</td>
-                            <td>{{ $laporan->tipe }}</td>
-                            <td>{{ $laporan->status }}</td>
-                            <td>{{ $laporan->petugas }}</td>
+                            <td class="text-center">
+                                @if ($laporan->prioritas === 'Hight')
+                                    <label class="badge badge-danger font-weigh-bold">
+                                        {{ $laporan->prioritas }}
+                                    </label>
+                                @elseif ($laporan->prioritas == 'Medium')
+                                    <label class="badge badge-warning font-weigh-bold">
+                                        {{ $laporan->prioritas }}
+                                    </label>
+                                @elseif ($laporan->prioritas == 'Low')
+                                    <label class="badge badge-success font-weigh-bold">
+                                        {{ $laporan->prioritas }}
+                                    </label>
+                                @else
+                                    <label> - </label>
+                                @endif
+                            </td>
+                            <td>
+                                <label class="badge font-weight-bold text-light" style="background: {{ $laporan->warna }};">
+                                    {{ $laporan->status }}
+                                </label>
+                            </td>
                             <td>{{ $laporan->pemohon }}</td>
                         </tr>
                     @endforeach

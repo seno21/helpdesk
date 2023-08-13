@@ -24,12 +24,13 @@ class LacakController extends Controller
 
         $keyword = $request->cari;
         $hasil = $tiket->searchTiket($keyword);
-
+        $petugasNama = $hasil->nama ?? '-';
 
         $data = [
             'title' => 'Lacak Tiket',
             'hasil' => $hasil,
-            'progreses' => $progres->showProgres($keyword)
+            'progreses' => $progres->showProgres($keyword),
+            'petugas' => $petugasNama
         ];
 
         return view('lacak.index', $data);
@@ -42,6 +43,7 @@ class LacakController extends Controller
 
         $keyword = $request->cari;
         $hasil = $tiket->searchTiket($keyword);
+        $petugasNama = $hasil->nama ?? '-';
         // Cek ada tiket atau tidak
         if ($hasil == null) {
             return redirect()->back()->with('error', 'Tiket Tidak Ditemukan');
@@ -51,7 +53,8 @@ class LacakController extends Controller
         $data = [
             'title' => 'Lacak Tiket',
             'hasil' => $hasil,
-            'progreses' => $progres->showProgres($keyword)
+            'progreses' => $progres->showProgres($keyword),
+            'petugas' => $petugasNama
         ];
 
         return view('lacak.index', $data);

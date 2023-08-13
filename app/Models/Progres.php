@@ -21,18 +21,22 @@ class Progres extends Model
     public function showProgres($no_tiket)
     {
         return DB::table('progres')
-            ->select('progres.no_tiket', 'progres.tgl_proses', 'progres.deskripsi', 'karyawans.nama', 'progres.last')
-            ->join('karyawans', 'progres.id_karyawan', 'karyawans.id')
+            ->select(
+                'progres.no_tiket',
+                'progres.tgl_proses',
+                'progres.deskripsi',
+                'progres.last'
+            )
             ->where('progres.no_tiket', $no_tiket)
             ->get();
     }
 
-    public function petugas($no_tiket)
+    public function tglSelesai($no_tiket)
     {
         return DB::table('progres')
-            ->select('progres.no_tiket', 'progres.tgl_proses', 'progres.deskripsi', 'karyawans.nama', 'progres.last')
-            ->join('karyawans', 'progres.id_karyawan', 'karyawans.id')
+            ->select('progres.no_tiket', 'progres.tgl_proses', 'progres.last')
             ->where('progres.no_tiket', $no_tiket)
+            ->where('progres.last', 1)
             ->latest('progres.id')
             ->first();
     }

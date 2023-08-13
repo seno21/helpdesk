@@ -16,23 +16,23 @@ class KaryawanSeeder extends Seeder
     {
         $data = [
             [
-                'nama' => 'Fega Suseno',
-                'nik' => '201709080',
-                'tgl_lahir' => '2000-06-23',
-                'kelamin' => 'L',
-                'telepon' => '+62-89661499225',
-                'alamat' => 'Desa. Kasugengan Lor, Kec. Depok Kab. Cirebon',
-                'lokasi' => 'Unit IT',
-                'id_user' => 1,
-                'id_unit' => 1
-            ],
-            [
                 'nama' => 'Rizki Andri Anto',
                 'nik' => '201709089',
                 'tgl_lahir' => '1999-10-21',
                 'kelamin' => 'L',
                 'telepon' => '+62-89661499225',
                 'alamat' => 'Pengampon Watan Jamblang',
+                'lokasi' => 'Unit IT',
+                'id_user' => 1,
+                'id_unit' => 1
+            ],
+            [
+                'nama' => 'Fega Suseno',
+                'nik' => '201709080',
+                'tgl_lahir' => '2000-06-23',
+                'kelamin' => 'L',
+                'telepon' => '+62-89661499225',
+                'alamat' => 'Desa. Kasugengan Lor, Kec. Depok Kab. Cirebon',
                 'lokasi' => 'Unit IT',
                 'id_user' => 2,
                 'id_unit' => 1

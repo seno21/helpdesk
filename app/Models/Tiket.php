@@ -83,7 +83,7 @@ class Tiket extends Model
                 'tikets.created_at',
                 'tikets.pemohon',
                 'statuses.status',
-                'statuses.id',
+                'statuses.id as id_status',
                 'tikets.judul',
                 'units.divisi',
                 'tikets.kerusakan',
@@ -112,7 +112,7 @@ class Tiket extends Model
                 'tikets.created_at',
                 'tikets.pemohon',
                 'statuses.status',
-                'statuses.id',
+                'statuses.id as id_status',
                 'tikets.judul',
                 'units.divisi',
                 'tikets.kerusakan',
@@ -139,24 +139,25 @@ class Tiket extends Model
     {
         $tiket = DB::table('tikets')
             ->select(
-                'tikets.id',
+                'tikets.id as idTiket',
                 'tikets.selesai',
                 'tikets.prioritas',
                 'tikets.no_tiket',
                 'tikets.created_at',
                 'tikets.pemohon',
-                'statuses.status',
-                'tikets.judul',
-                'units.divisi',
                 'tikets.kerusakan',
-                'statuses.warna'
+                'tikets.judul',
+                'statuses.status',
+                'statuses.warna',
+                'units.divisi',
+                'users.id'
             )
             // ->select('*')
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('karyawans', 'tikets.id_karyawan', 'karyawans.id')
             ->join('users', 'karyawans.id_user', 'users.id')
-            ->where('tikets.id_user', $id)
+            ->where('tikets.id_karyawan', $id)
             ->orderBy('tikets.selesai')
             ->get();
 
@@ -168,7 +169,7 @@ class Tiket extends Model
     {
         $detail = DB::table('tikets')
             ->select(
-                'tikets.id',
+                'tikets.id as idTiket',
                 'tikets.no_tiket',
                 'tikets.created_at AS tanggal',
                 'tikets.pemohon',
@@ -219,10 +220,12 @@ class Tiket extends Model
                 'tikets.judul',
                 'units.divisi',
                 'tikets.kerusakan',
-                'tikets.selesai'
+                'tikets.selesai',
+                'karyawans.nama',
             )
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
+            ->join('karyawans', 'tikets.id_karyawan', 'karyawans.id')
             // ->where('tikets.no_tiket', 'like', "%" . $no_tiket . "%")
             ->where('tikets.no_tiket', $no_tiket)
             ->first();
@@ -269,18 +272,16 @@ class Tiket extends Model
                 'tikets.no_tiket',
                 'tikets.tanggal',
                 'tikets.pemohon',
+                'tikets.prioritas',
                 'statuses.status',
                 'statuses.warna',
                 'tikets.judul',
                 'units.divisi',
-                'prioritas.id AS color',
-                'prioritas.tipe',
                 'tikets.kerusakan',
                 'tikets.selesai',
                 'karyawans.nama AS petugas',
             )
             ->join('units', 'tikets.id_unit', 'units.id')
-            ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
             ->join('karyawans', 'users.id', 'karyawans.id_user')

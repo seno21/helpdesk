@@ -35,8 +35,8 @@
                                                     <div class="line h-100"></div>
                                                 </div>
                                                 <div>
-                                                    <h4 class="mt-1">Pemohon: <b><u><i>{{ $hasil->no_tiket }}</i></u></b>
-                                                    </h4>
+                                                    <h4 class="mt-1"><b>Pemohon: </b>{{ $hasil->pemohon }}</h4>
+                                                    <h4 class="mt-1"><b>Petugas: </b>{{ $petugas }}</h4>
                                                     <h5>
                                                         @php
                                                             $tgl = date_create($hasil->tanggal);
@@ -69,10 +69,7 @@
                                                 </div>
 
                                                 <div>
-                                                    <h4 class="mt-2">Petugas:
-                                                        <b><u><i>{{ $progres->nama }}</i></u></b>
-                                                    </h4>
-                                                    <h5>
+                                                    <h5 class="mt-3">
                                                         @php
                                                             $tgl_proses = date_create($progres->tgl_proses);
                                                             echo date_format($tgl_proses, 'd/m/y H:i:s A');
