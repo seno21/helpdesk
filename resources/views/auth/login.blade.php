@@ -4,7 +4,7 @@
     <div class="brand-logo mb-3">
         <img src="{{ asset('images/logo.svg') }}" alt="logo">
     </div>
-    <h1 class="text-lg font-weight-bold mb-1" style="font-size: 20px;">
+    <h1 class="text-lg text-center font-weight-bold mb-1" style="font-size: 18px;">
         SISTEM INFORMASI HELPDESK TICKETING
     </h1>
     <hr class="mb-3" style="border: solid 2px #51998C;">
