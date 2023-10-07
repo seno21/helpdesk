@@ -17,7 +17,7 @@
                                     <tr>
                                         <th>No. Tiket</th>
                                         <th>Tanggal Komplain</th>
-                                        <th>Judul</th>
+                                        <th>Kategori</th>
                                         <th>Unit</th>
                                         <th>Prioritas</th>
                                         <th>Status</th>
@@ -34,7 +34,7 @@
                                                     echo date_format($tgl, 'd/m/Y');
                                                 @endphp
                                             </td>
-                                            <td>{{ $tiket->judul }}</td>
+                                            <td>{{ $tiket->nama }}</td>
                                             <td>{{ $tiket->divisi }}</td>
                                             <td>
                                                 @if ($tiket->prioritas === 'Hight')

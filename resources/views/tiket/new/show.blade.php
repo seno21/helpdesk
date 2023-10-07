@@ -37,8 +37,8 @@
                                     <h4 class="text-lg font-weight-strong mt-1"> {{ $detail->lokasi }}</h4>
                                 </li>
                                 <li class="mb-4">
-                                    <h6 class="font-weight-bold text-secondary">Judul Komplain:</h6>
-                                    <h4 class="text-lg font-weight-strong mt-1"> {{ $detail->judul }}</h4>
+                                    <h6 class="font-weight-bold text-secondary">Kategori Komplain:</h6>
+                                    <h4 class="text-lg font-weight-strong mt-1"> {{ $detail->nama }}</h4>
                                 </li>
                                 <li class="mb-4">
                                     <h6 class="font-weight-bold text-secondary">Keterangan Komplain Kerusakan:</h6>

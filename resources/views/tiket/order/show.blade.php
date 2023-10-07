@@ -45,9 +45,9 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th>Judul</th>
+                                        <th>Kategori Kerusakan</th>
                                         <th>:</th>
-                                        <th>{{ $detail->judul }}</th>
+                                        <th>{{ $detail->nama }}</th>
                                     </tr>
                                     <tr>
                                         <th>Unit Kerja</th>

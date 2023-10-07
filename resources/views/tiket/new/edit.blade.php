@@ -19,9 +19,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="judul">Judul Komplain</label>
-                            <input type="text" class="form-control" name="judul" id="judul"
-                                value="{{ $tiket->judul }}">
+                            <label for="kategori">Kategori Komplain</label>
+                            <div>
+                                <select class="form-control" name="kategori" id="kategori">
+                                    <option value="{{ $tiket->id }}">{{ $tiket->nama }}</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>

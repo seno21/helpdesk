@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Karyawan;
+use App\Models\Kategori;
 use App\Models\Progres;
 use App\Models\Tiket;
 use App\Models\Unit;
@@ -83,7 +84,7 @@ class TiketController extends Controller
             'detail' => $tiket->showTiket($id),
             'petugas' => $petugasNama,
             'progreses' => $progres->showProgres($noTiket->no_tiket),
-            'selesai' => $progres->tglSelesai($noTiket->no_tiket)
+            'selesai' => $progres->tglSelesai($noTiket->no_tiket),
         ];
 
         return view('tiket.new.show', $data);
@@ -95,7 +96,8 @@ class TiketController extends Controller
         $karyawan = new Karyawan();
         $data = [
             'title' => 'Formulir Create Ticket',
-            'unit' => $karyawan->showUnitKaryawan(Auth::user()->id)
+            'unit' => $karyawan->showUnitKaryawan(Auth::user()->id),
+            'kategoris' => Kategori::all(),
         ];
 
         return view('tiket.new.create', $data);
@@ -114,7 +116,7 @@ class TiketController extends Controller
         $tiket->tanggal = $request->tgl_buat;
         $tiket->id_user = Auth::user()->id;
         $tiket->no_tiket = $request->no_tiket;
-        $tiket->judul = $request->judul;
+        $tiket->id_kategori = $request->kategori;
         $tiket->id_unit = $request->unit;
         // $tiket->lokasi = $request->lokasi;
         $tiket->pemohon = $pemohon->nama;
@@ -152,7 +154,7 @@ class TiketController extends Controller
         }
 
         $tiket->no_tiket = $request->no_tiket;
-        $tiket->judul = $request->judul;
+        $tiket->id_kategori = $request->kategori;
         $tiket->id_unit = $request->unit;
         $tiket->kerusakan = $request->kerusakan;
         $tiket->pemohon = $pemohon->nama;

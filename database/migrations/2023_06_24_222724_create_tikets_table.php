@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('no_tiket');
             $table->date('tanggal');
-            $table->string('judul');
+            $table->bigInteger('id_kategori');
             $table->bigInteger('id_unit');
             // $table->string('lokasi');
             $table->text('kerusakan');

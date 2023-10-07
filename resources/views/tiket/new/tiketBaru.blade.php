@@ -19,7 +19,7 @@
                                     <tr>
                                         <th>No. Tiket</th>
                                         <th>Tanggal Dibuat</th>
-                                        <th>Judul</th>
+                                        <th>Kategori</th>
                                         <th>Unit</th>
                                         {{-- <th>Petugas</th> --}}
                                         <th>Status</th>
@@ -37,7 +37,7 @@
                                                 @endphp
                                                 {{ $tgl_buat }}
                                             </td>
-                                            <td>{{ $tiket->judul }}</td>
+                                            <td>{{ $tiket->nama }}</td>
                                             <td>{{ $tiket->divisi }}</td>
                                             {{-- <td>
                                                     @if ($tiket->prioritas == '1')

@@ -31,7 +31,7 @@
                     <tr>
                         <th>No. Tiket</th>
                         <th>Tanggal</th>
-                        <th>Judul</th>
+                        <th>Kategori</th>
                         <th>Unit</th>
                         <th>Prioritas</th>
                         <th>Status</th>
@@ -48,7 +48,7 @@
                                     echo date_format($tgl, 'd/m/Y');
                                 @endphp
                             </td>
-                            <td>{{ $laporan->judul }}</td>
+                            <td>{{ $laporan->kategori }}</td>
                             <td>{{ $laporan->divisi }}</td>
                             <td class="text-center">
                                 @if ($laporan->prioritas === 'Hight')

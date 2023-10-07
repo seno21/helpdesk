@@ -23,7 +23,7 @@ class Tiket extends Model
                 'tikets.created_at',
                 'tikets.pemohon',
                 'statuses.status',
-                'tikets.judul',
+                'kategoris.nama',
                 'units.divisi',
                 'prioritas.tipe',
                 'tikets.kerusakan',
@@ -34,7 +34,8 @@ class Tiket extends Model
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('prioritas', 'tikets.id_prioritas', 'prioritas.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
-            ->join('users', 'tikets.id_user', 'users.id');
+            ->join('users', 'tikets.id_user', 'users.id')
+            ->join('kategoris', 'tikets.id_kategori', 'kategoris.id');
 
         if (Auth::user()->id != 1) {
             $query->where('tikets.id_user', Auth::user()->id);
@@ -54,7 +55,7 @@ class Tiket extends Model
                 'tikets.pemohon',
                 'statuses.status',
                 'statuses.id as id_status',
-                'tikets.judul',
+                'kategoris.nama',
                 'units.divisi',
                 'tikets.prioritas',
                 'tikets.kerusakan',
@@ -65,6 +66,7 @@ class Tiket extends Model
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
+            ->join('kategoris', 'tikets.id_kategori', 'kategoris.id')
             ->where('statuses.id', 1);
         if (Auth::user()->id != 1) {
             $query->where('tikets.id_user', Auth::user()->id);
@@ -84,7 +86,7 @@ class Tiket extends Model
                 'tikets.pemohon',
                 'statuses.status',
                 'statuses.id as id_status',
-                'tikets.judul',
+                'kategoris.nama',
                 'units.divisi',
                 'tikets.kerusakan',
                 'statuses.warna',
@@ -113,7 +115,7 @@ class Tiket extends Model
                 'tikets.pemohon',
                 'statuses.status',
                 'statuses.id as id_status',
-                'tikets.judul',
+                'kategoris.nama',
                 'units.divisi',
                 'tikets.kerusakan',
                 'statuses.warna',
@@ -123,6 +125,7 @@ class Tiket extends Model
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
+            ->join('kategoris', 'tikets.id_kategori', 'kategoris.id')
             ->where('statuses.id', 3);
         if (Auth::user()->id != 1) {
             $query->where('tikets.id_user', Auth::user()->id);
@@ -146,7 +149,7 @@ class Tiket extends Model
                 'tikets.created_at',
                 'tikets.pemohon',
                 'tikets.kerusakan',
-                'tikets.judul',
+                'kategoris.nama',
                 'statuses.status',
                 'statuses.warna',
                 'units.divisi',
@@ -157,6 +160,7 @@ class Tiket extends Model
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('karyawans', 'tikets.id_karyawan', 'karyawans.id')
             ->join('users', 'karyawans.id_user', 'users.id')
+            ->join('kategoris', 'tikets.id_kategori', 'kategoris.id')
             ->where('tikets.id_karyawan', $id)
             ->orderBy('tikets.selesai')
             ->get();
@@ -175,7 +179,7 @@ class Tiket extends Model
                 'tikets.pemohon',
                 'statuses.status',
                 'statuses.warna',
-                'tikets.judul',
+                'kategoris.nama',
                 'units.divisi',
                 'tikets.kerusakan',
                 'tikets.selesai',
@@ -186,6 +190,7 @@ class Tiket extends Model
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
             ->join('karyawans', 'users.id', 'karyawans.id_user')
+            ->join('kategoris', 'tikets.id_kategori', 'kategoris.id')
             ->where('tikets.id', $id)
             ->first();
 
@@ -217,7 +222,7 @@ class Tiket extends Model
                 'tikets.pemohon',
                 'statuses.status',
                 'statuses.warna',
-                'tikets.judul',
+                'kategoris.nama',
                 'units.divisi',
                 'tikets.kerusakan',
                 'tikets.selesai',
@@ -226,6 +231,7 @@ class Tiket extends Model
             ->join('units', 'tikets.id_unit', 'units.id')
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('karyawans', 'tikets.id_karyawan', 'karyawans.id')
+            ->join('kategoris', 'tikets.id_kategori', 'kategoris.id')
             // ->where('tikets.no_tiket', 'like', "%" . $no_tiket . "%")
             ->where('tikets.no_tiket', $no_tiket)
             ->first();
@@ -275,7 +281,7 @@ class Tiket extends Model
                 'tikets.prioritas',
                 'statuses.status',
                 'statuses.warna',
-                'tikets.judul',
+                'kategoris.nama',
                 'units.divisi',
                 'tikets.kerusakan',
                 'tikets.selesai',
@@ -285,6 +291,7 @@ class Tiket extends Model
             ->join('statuses', 'tikets.id_status', 'statuses.id')
             ->join('users', 'tikets.id_user', 'users.id')
             ->join('karyawans', 'users.id', 'karyawans.id_user')
+            ->join('kategoris', 'tikets.id_kategori', 'kategoris.id')
             ->where('tikets.id_user', Auth::user()->id)
             ->whereBetween('tikets.tanggal', [$tgl_awal, $tgl_akhir]);
 

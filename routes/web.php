@@ -6,6 +6,7 @@ use App\Http\Controllers\LacakController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TiketController;
 use App\Http\Controllers\UnitController;
@@ -76,6 +77,9 @@ Route::get('search', [LacakController::class, 'search'])->name('search')->middle
 Route::get('search/tiket', [LacakController::class, 'tiket'])->name('search.tiket')->middleware('isLogin');
 
 Route::get('laporan', [LaporanController::class, 'index'])->name('laporan')->middleware('isLogin');
+
+//Report tahunan
+Route::get('diagram', [ReportController::class, 'index'])->name('report')->middleware('isLogin');
 // Route::get('laporan/list', [LaporanController::class, 'laporan'])->name('laporan.list')->middleware('isLogin');
 
 
